@@ -1,5 +1,7 @@
 # Ras's diary
 
+
+
 <footer class="body-footer" style="position: sticky; top: 100vh;">
   <div style="display: flex; justify-content: space-between;">
     <span>© 2024 ras0q</span>
