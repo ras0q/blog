@@ -10,7 +10,7 @@
       /
       <a href="/feed.rss">RSS Feed</a>
       /
-      <a href="https://github.com/ras0q/diary">GitHub Repository</a>
+      <a href="https://github.com/ras0q/diary">GitHub</a>
     </span>
   </div>
 </footer>
