@@ -2,7 +2,8 @@
   "imports": {
     "lume/": "https://deno.land/x/lume@v2.2.3/",
     "wiki/": "https://deno.land/x/lume_theme_simple_wiki@v0.8.2/",
-    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.5.4/"
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.5.4/",
+    "octokit": "npm:octokit@^4.0.2"
   },
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
