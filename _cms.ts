@@ -28,10 +28,51 @@ if (isRemote) {
   );
 }
 
-cms.collection("pages: All pages of the site", "src:**/*.md", [
-  "date: datetime",
-  "content: markdown",
-]);
+const datePattern = "\\d{4}-\\d{2}-\\d{2}";
+const nowDate = new Date().toLocaleDateString("sv-SE"); // YYYY-MM-DD
+
+cms.collection({
+  name: "pages",
+  store: "src:posts/**/*.md",
+  fields: [
+    {
+      name: "title",
+      type: "text",
+      attributes: {
+        required: true,
+        pattern: datePattern + "_.+",
+      },
+      value: nowDate + "_",
+    },
+    {
+      name: "draft",
+      type: "checkbox",
+    },
+    {
+      name: "date",
+      type: "text",
+      attributes: {
+        required: true,
+        pattern: datePattern,
+      },
+      value: nowDate,
+    },
+    {
+      name: "tags",
+      type: "list",
+      label: "Tags",
+      init(field) {
+        const { data } = field.cmsContent;
+        field.options = data.site?.search.values("tags");
+      },
+    },
+    {
+      name: "content",
+      type: "markdown",
+    },
+  ],
+  nameField: "title",
+});
 
 cms.upload("uploads: Uploaded files", "src:assets");
 
