@@ -25,4 +25,6 @@ site
 
 site.data("layout", "markdown.tsx", "/posts");
 
+site.copy("assets", "assets")
+
 export default site;
