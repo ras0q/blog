@@ -23,6 +23,6 @@ site
     })
   );
 
-site.data("layout", "global.tsx", "/");
+site.data("layout", "markdown.tsx", "/");
 
 export default site;
