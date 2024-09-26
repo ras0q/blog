@@ -23,11 +23,10 @@ export default (data: Lume.Data) => (
       >
       </main>
       <footer class="sticky top-100svh p-4xl">
-        <div class="flex justify-end gap-lg">
-          <div>© 2024 ras0q</div>
-          <div>
-            Powered by <a href="https://lume.land">🔥Lume</a>
-          </div>
+        <div class="flex justify-end">
+          ©&nbsp;2024&nbsp;
+          <a href="https://ras0q.com" class="underline">@ras0q</a>&nbsp;Powered
+          by&nbsp;🔥<a href="https://lume.land" class="underline">Lume</a>
         </div>
       </footer>
     </body>
