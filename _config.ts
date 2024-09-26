@@ -1,12 +1,17 @@
 import lume from "lume/mod.ts";
 import feed from "lume/plugins/feed.ts";
 import jsx from "lume/plugins/jsx_preact.ts";
+import lightningCss from "lume/plugins/lightningcss.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import unocss from "lume/plugins/unocss.ts";
 import unoConfig from "./uno.config.ts";
 
 const site = lume();
 
+// Extensions
+site.use(jsx());
+
+// Generators
 site
   .use(
     feed({
@@ -16,7 +21,6 @@ site
       },
     })
   )
-  .use(jsx())
   .use(pagefind())
   .use(
     unocss({
@@ -25,6 +29,9 @@ site
       reset: "tailwind-compat",
     })
   );
+
+// Bundlers
+site.use(lightningCss());
 
 site.data("layout", "markdown.tsx", "/posts");
 
