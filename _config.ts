@@ -30,4 +30,6 @@ site.data("layout", "markdown.tsx", "/posts");
 
 site.copy("assets", "assets");
 
+site.parseBasename((basename) => ({ basename }));
+
 export default site;
