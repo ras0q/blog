@@ -1,0 +1,31 @@
+import RSSParser from "rss-parser";
+import { Post } from "./types.d.ts";
+
+export const layout = "external.tsx";
+
+export default async function* () {
+  const trapPosts = (
+    await new RSSParser({
+      customFields: {
+        item: ["media:content"],
+      },
+    }).parseURL("https://speakerdeck.com/ras0q.rss")
+  ).items
+    .map(
+      (item) =>
+        ({
+          title: item.title!,
+          url: `/external/speakerdeck/${encodeURIComponent(item.guid!)}/`,
+          redirectURL: item.link!,
+          tags: ["speakerdeck"],
+          date: new Date(item.pubDate ?? ""),
+          content: item.contentSnippet ?? "",
+          thumbnail: item["media:content"].$.url,
+        } satisfies Post)
+    )
+    .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+  for (const post of trapPosts) {
+    yield post;
+  }
+}

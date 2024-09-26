@@ -5,6 +5,7 @@
     "lume/": "https://deno.land/x/lume@v2.3.2/",
     "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.6.3/",
     "octokit": "npm:octokit@4.0.2",
+    "rss-parser": "npm:rss-parser@^3.13.0",
     "unocss": "npm:unocss@0.62.3"
   },
   "tasks": {
