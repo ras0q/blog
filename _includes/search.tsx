@@ -1,10 +1,14 @@
-import PageData from "./_includes/libs/PageData.tsx";
-import Tag from "./_includes/libs/Tag.tsx";
+import PageData from "./libs/PageData.tsx";
+import Tag from "./libs/Tag.tsx";
 
 export const layout = "global.tsx";
 export const title = "Home";
 
 export default (data: Lume.Data) => {
+  if (data.query === undefined) {
+    return <div>Tag not found!</div>;
+  }
+
   return (
     <div class="space-y-4xl">
       <section>
@@ -14,7 +18,9 @@ export default (data: Lume.Data) => {
         {data.search.values("tags").map((tag) => <Tag tag={tag as string} />)}
       </section>
       <section class="space-y-4xl">
-        {data.search.pages("url^=/posts", "date=desc").map((data) => (
+        {data.search.pages(data.query, "date=desc").map((
+          data,
+        ) => (
           <article>
             <h2 class="text-2xl">
               <a href={data.url}>{data.title ?? "Untitled"}</a>

@@ -38,7 +38,6 @@ if (isProd) {
   site.use(lightningCss());
 }
 
-site.data("layout", "markdown.tsx", "/posts");
 const siteName = "Ras's diary";
 site.data("metas", {
   site: siteName,
@@ -51,6 +50,9 @@ site.data("metas", {
   robots: true,
   generator: true,
 } satisfies MetaData);
+
+site.data("layout", "markdown.tsx", "/posts");
+site.data("tags", ["diary"], "/posts")
 
 site.copy("public", "");
 
