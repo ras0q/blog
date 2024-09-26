@@ -5,7 +5,7 @@ export const layout = "global.tsx";
 export default (data: Lume.Data) => {
   return (
     <>
-      <div id="search" class="my-8"></div>
+      <div id="search" class="my-8 h-51.2px"></div>
       <section class="flex flex-col flex-content-center gap-8">
         {data.search.pages("url^=/posts", "date=desc").map((data) => (
           <article>
