@@ -2,6 +2,7 @@ import RSSParser from "rss-parser";
 import { Post } from "./types.d.ts";
 
 export const layout = "external.tsx";
+export const renderOrder = -1;
 
 export default async function* () {
   const trapPosts = (
