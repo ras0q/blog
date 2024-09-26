@@ -14,7 +14,7 @@ export default (data: Lume.Data) => {
       <section>
         <div id="search" class="min-h-51.2px"></div>
       </section>
-      <section class="flex justify-center gap-xs text-2xl">
+      <section class="flex flex-wrap justify-center gap-xs text-2xl">
         {data.search.values("tags").map((tag) => <Tag tag={tag as string} />)}
       </section>
       <section class="space-y-4xl">
