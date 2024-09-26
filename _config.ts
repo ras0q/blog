@@ -6,6 +6,8 @@ import pagefind from "lume/plugins/pagefind.ts";
 import unocss from "lume/plugins/unocss.ts";
 import unoConfig from "./uno.config.ts";
 
+const isProd = Deno.env.get("DENO_ENV") === "production";
+
 const site = lume();
 
 // Extensions
@@ -31,7 +33,9 @@ site
   );
 
 // Bundlers
-site.use(lightningCss());
+if (isProd) {
+  site.use(lightningCss());
+}
 
 site.data("layout", "markdown.tsx", "/posts");
 
