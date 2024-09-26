@@ -16,7 +16,7 @@ export default (data: Lume.Data) => (
         <h1 class="text-4xl">{data.title}</h1>
         <PageData {...data} />
         {data.redirectURL && (
-          <a class="text-blue b-blue b-b-1" href={data.redirectURL}>
+          <a class="text-blue-6 b-blue-6 b-b-1" href={data.redirectURL}>
             {data.redirectURL}
           </a>
         )}
