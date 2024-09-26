@@ -4,6 +4,7 @@ import jsx from "lume/plugins/jsx_preact.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import metas, { MetaData } from "lume/plugins/metas.ts";
 import pagefind from "lume/plugins/pagefind.ts";
+import sitemap from "lume/plugins/sitemap.ts";
 import unocss from "lume/plugins/unocss.ts";
 import unoConfig from "./uno.config.ts";
 
@@ -25,6 +26,7 @@ site
     })
   )
   .use(pagefind())
+  .use(sitemap())
   .use(
     unocss({
       options: unoConfig,
