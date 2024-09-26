@@ -52,7 +52,7 @@ site.data("metas", {
   generator: true,
 } satisfies MetaData);
 
-site.copy("assets", "assets");
+site.copy("public", "");
 
 site.parseBasename((basename) => ({
   date: basename.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? undefined,

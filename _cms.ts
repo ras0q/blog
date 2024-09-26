@@ -65,6 +65,6 @@ cms.collection({
   nameField: "title",
 });
 
-cms.upload("uploads: Uploaded files", "src:assets");
+cms.upload("uploads: Uploaded files", "src:public", "/");
 
 export default cms;
