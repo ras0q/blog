@@ -2,6 +2,7 @@ export default (data: Lume.Data) => (
   <html>
     <head>
       <link rel="stylesheet" href="/unocss.css" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
     <body class="min-h-100svh overflow-y-scroll prose-neutral dark:prose-invert">
@@ -17,7 +18,8 @@ export default (data: Lume.Data) => (
       <main
         class="mx-auto max-w-2xl"
         dangerouslySetInnerHTML={{ __html: String(data.content) }}
-      ></main>
+      >
+      </main>
       <footer class="sticky top-100svh p-4xl">
         <div class="flex justify-end gap-lg">
           <div>© 2024 ras0q</div>

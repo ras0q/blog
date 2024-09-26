@@ -1,6 +1,7 @@
 import PageData from "./libs/PageData.tsx";
 
 export const layout = "global.tsx";
+export const title = "Home";
 
 export default (data: Lume.Data) => {
   return (
