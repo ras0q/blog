@@ -4,7 +4,7 @@ export default (data: Lume.Data) => (
       <link rel="stylesheet" href="/unocss.css" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
-    <body class="min-h-100svh overflow-y-scroll">
+    <body class="min-h-100svh overflow-y-scroll prose-neutral dark:prose-invert">
       <nav class="p-4xl flex flex-wrap justify-between">
         <a href="/" class="text-xl font-bold">
           Ras's diary
