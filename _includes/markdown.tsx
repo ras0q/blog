@@ -1,4 +1,4 @@
-import PageData from "../libs/PageData.tsx";
+import PageData from "./libs/PageData.tsx";
 
 export const layout = "global.tsx";
 
