@@ -1,7 +1,7 @@
 import PageData from "./libs/PageData.tsx";
 import Tag from "./libs/Tag.tsx";
 
-export const layout = "global.tsx";
+export const layout = "base.tsx";
 export const title = "Home";
 
 export default (data: Lume.Data) => {

@@ -1,6 +1,6 @@
 import PageData from "./libs/PageData.tsx";
 
-export const layout = "global.tsx";
+export const layout = "base.tsx";
 
 export default (data: Lume.Data) => (
   <>

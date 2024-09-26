@@ -1,15 +1,17 @@
+import { siteTitle } from "./libs/consts.ts";
+
 export default (data: Lume.Data) => (
-  <html>
+  <html lang="ja">
     <head>
+      <title>{`${data.title} | ${siteTitle}`}</title>
       <link rel="stylesheet" href="/unocss.css" />
+      <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
     <body class="min-h-100svh overflow-y-scroll prose-neutral dark:prose-invert">
       <nav class="p-4xl flex flex-wrap justify-between">
-        <a href="/" class="text-xl font-bold">
-          Ras's diary
-        </a>
+        <a href="/" class="text-xl font-bold">{siteTitle}</a>
         <div class="space-x-xl">
           <a href="https://github.com/ras0q/diary">GitHub</a>
           <a href="/feed.rss">RSS</a>

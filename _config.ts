@@ -7,6 +7,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import unocss from "lume/plugins/unocss.ts";
 import unoConfig from "./uno.config.ts";
+import { siteLang, siteTitle } from "./_includes/libs/consts.ts";
 
 const isProd = Deno.env.get("DENO_ENV") === "production";
 
@@ -20,8 +21,8 @@ site
   .use(
     feed({
       info: {
-        title: "Ras's diary",
-        lang: "ja",
+        title: siteTitle,
+        lang: siteLang,
       },
     })
   )
@@ -40,11 +41,10 @@ if (isProd) {
   site.use(lightningCss());
 }
 
-const siteName = "Ras's diary";
 site.data("metas", {
-  site: siteName,
-  title: ({ title }) => `${title} | ${siteName}`,
-  lang: "ja",
+  site: siteTitle,
+  title: ({ title }) => `${title} | ${siteTitle}`,
+  lang: siteLang,
   description: "Rasによる日記です",
   image: "=image",
   icon: "/favicon.svg",
@@ -54,7 +54,7 @@ site.data("metas", {
 } satisfies MetaData);
 
 site.data("layout", "markdown.tsx", "/posts");
-site.data("tags", ["diary"], "/posts")
+site.data("tags", ["diary"], "/posts");
 
 site.copy("public", "");
 
