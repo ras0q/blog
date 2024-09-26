@@ -49,15 +49,6 @@ cms.collection({
       type: "checkbox",
     },
     {
-      name: "date",
-      type: "text",
-      attributes: {
-        required: true,
-        pattern: datePattern,
-      },
-      value: nowDate,
-    },
-    {
       name: "tags",
       type: "list",
       label: "Tags",

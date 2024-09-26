@@ -37,6 +37,9 @@ site.data("layout", "markdown.tsx", "/posts");
 
 site.copy("assets", "assets");
 
-site.parseBasename((basename) => ({ basename }));
+site.parseBasename((basename) => ({
+  date: basename.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? undefined,
+  basename,
+}));
 
 export default site;
