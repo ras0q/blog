@@ -13,7 +13,7 @@ export default (data: Lume.Data) => (
       <nav class="p-4xl flex flex-wrap justify-between">
         <a href="/" class="text-xl font-bold">{siteTitle}</a>
         <div class="space-x-xl">
-          <a href="https://github.com/ras0q/diary">GitHub</a>
+          <a href="https://github.com/ras0q/blog">GitHub</a>
           <a href="/feed.rss">RSS</a>
         </div>
       </nav>

@@ -23,7 +23,7 @@ if (isRemote) {
     new GitHub({
       client: new Octokit({ auth: Deno.env.get("GITHUB_TOKEN") }),
       owner: "ras0q",
-      repo: "diary",
+      repo: "blog",
     })
   );
 }
