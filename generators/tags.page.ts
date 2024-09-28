@@ -13,7 +13,7 @@ export default function* ({ search }: Lume.Data) {
     url: "/",
     title: "Home",
     type: "tag",
-    query: "",
+    query: "type!=tag",
   } satisfies Data;
 
   for (const tag of search.values("tags")) {
