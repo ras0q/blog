@@ -34,7 +34,7 @@ export default (data: Lume.Data) => {
                 <img
                   src={data.thumbnail}
                   alt="thumbnail"
-                  class="w-40% min-w-40% aspect-ratio-[16/9] object-cover"
+                  class="pt-xs w-40% min-w-40% aspect-ratio-[16/9] object-cover"
                 />
               )}
             </div>
