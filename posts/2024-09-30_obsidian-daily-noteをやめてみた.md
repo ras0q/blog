@@ -1,5 +1,5 @@
 ---
-title: '2024-09-30_[Obsidian] Daily Noteをやめてみた'
+title: 2024-09-30_Obsidian Daily Noteをやめてみた
 draft: false
 tags:
   - obsidian
