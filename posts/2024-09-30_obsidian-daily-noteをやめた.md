@@ -1,5 +1,5 @@
 ---
-title: 2024-09-30_Obsidian Daily Noteをやめてみた
+title: 2024-09-30_Obsidian Daily Noteをやめた
 draft: false
 tags:
   - obsidian
