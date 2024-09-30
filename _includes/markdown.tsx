@@ -11,7 +11,7 @@ export default (data: Lume.Data) => (
       </section>
       <hr />
       <div
-        class="prose"
+        class="prose mx-auto"
         dangerouslySetInnerHTML={{
           __html: String(data.content),
         }}
