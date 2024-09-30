@@ -1,4 +1,5 @@
 import lume from "lume/mod.ts";
+import codeHighlight from "lume/plugins/code_highlight.ts";
 import feed from "lume/plugins/feed.ts";
 import jsx from "lume/plugins/jsx_preact.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
@@ -18,13 +19,19 @@ site.use(jsx()).use(metas());
 
 // Generators
 site
+  .use(codeHighlight({
+    theme: {
+      name: "atom-one-light",
+      path: "/code_light.css",
+    },
+  }))
   .use(
     feed({
       info: {
         title: siteTitle,
         lang: siteLang,
       },
-    })
+    }),
   )
   .use(pagefind())
   .use(sitemap())
@@ -33,25 +40,30 @@ site
       options: unoConfig,
       transformers: unoConfig.transformers,
       reset: "tailwind-compat",
-    })
+    }),
   );
 
 // Bundlers
-if (isProd) {
-  site.use(lightningCss());
-}
+site.use(lightningCss({
+  options: {
+    minify: isProd,
+  },
+}));
 
-site.data("metas", {
-  site: siteTitle,
-  title: ({ title }) => `${title} | ${siteTitle}`,
-  lang: siteLang,
-  description: "Rasによる日記です",
-  image: "=image",
-  icon: "/favicon.svg",
-  twitter: "@ras0q",
-  robots: true,
-  generator: true,
-} satisfies MetaData);
+site.data(
+  "metas",
+  {
+    site: siteTitle,
+    title: ({ title }) => `${title} | ${siteTitle}`,
+    lang: siteLang,
+    description: "Rasによる日記です",
+    image: "=image",
+    icon: "/favicon.svg",
+    twitter: "@ras0q",
+    robots: true,
+    generator: true,
+  } satisfies MetaData,
+);
 
 site.data("layout", "markdown.tsx", "/posts");
 site.data("tags", ["diary"], "/posts");
