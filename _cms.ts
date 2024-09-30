@@ -37,7 +37,8 @@ const datePattern = "\\d{4}-\\d{2}-\\d{2}";
 const nowDate = new Date().toLocaleDateString("sv-SE"); // YYYY-MM-DD
 
 cms.collection({
-  name: "pages",
+  name: "posts",
+  description: "All posts of the site",
   store: "src:posts/**/*.md",
   fields: [
     {
