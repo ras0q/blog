@@ -87,4 +87,3 @@ years.forEach(year => {
 既存のDaily Noteを消す
 
 [[QuickAdd]]とか[[Templater]]の設定をもよしなに変える
-
