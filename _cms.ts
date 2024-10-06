@@ -33,7 +33,6 @@ if (isRemote) {
   );
 }
 
-const datePattern = "\\d{4}-\\d{2}-\\d{2}";
 const nowDate = new Date().toLocaleDateString("sv-SE"); // YYYY-MM-DD
 
 cms.collection({
@@ -46,9 +45,7 @@ cms.collection({
       type: "text",
       attributes: {
         required: true,
-        pattern: datePattern + "_.+",
       },
-      value: nowDate + "_",
     },
     {
       name: "draft",
@@ -68,7 +65,7 @@ cms.collection({
       type: "markdown",
     },
   ],
-  nameField: "title",
+  nameField: (changes) => `${nowDate}_${changes.title}`,
 });
 
 cms.upload("uploads: Uploaded files", "src:public", "/");
