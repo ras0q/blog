@@ -7,12 +7,25 @@ import metas, { MetaData } from "lume/plugins/metas.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import unocss from "lume/plugins/unocss.ts";
+import container from "markdown-it-container";
+import linkAttributes from "markdown-it-link-attributes";
+import mark from "markdown-it-mark";
 import unoConfig from "./uno.config.ts";
 import { siteLang, siteTitle } from "./_includes/libs/consts.ts";
 
 const isProd = Deno.env.get("DENO_ENV") === "production";
 
-const site = lume();
+const site = lume({}, {
+  markdown: {
+    plugins: [
+      container,
+      [linkAttributes, {
+        attrs: { target: "_blank", ref: "noopener" },
+      }],
+      mark,
+    ],
+  },
+});
 
 // Extensions
 site.use(jsx()).use(metas());
