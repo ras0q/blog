@@ -40,6 +40,7 @@ site
   }))
   .use(
     feed({
+      query: "type!=tag",
       info: {
         title: siteTitle,
         lang: siteLang,
