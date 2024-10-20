@@ -3,7 +3,7 @@
   "nodeModulesDir": "auto",
   "imports": {
     "lume/": "https://deno.land/x/lume@v2.3.2/",
-    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.6.8/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.7.0/",
     "markdown-it-container": "npm:markdown-it-container@^4.0.0",
     "markdown-it-link-attributes": "npm:markdown-it-link-attributes@^4.0.1",
     "markdown-it-link-preview": "npm:markdown-it-link-preview@^1.1.4",
