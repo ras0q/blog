@@ -1,0 +1,27 @@
+name: Update Deno Imports
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Run on the first day of every month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno outdated --update --latest
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update Deno imports
+          branch: update/deno-imports
+          delete-branch: true
+          title: Update Deno imports
