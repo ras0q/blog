@@ -6,7 +6,7 @@ export const renderOrder = -1;
 
 export default async function* () {
   const zennPosts = (
-    await new RSSParser().parseURL("https://zenn.dev/ras96/feed")
+    await new RSSParser().parseURL("https://zenn.dev/ras96/feed?include_scraps=1&all=1")
   ).items
     .map(
       (item) =>
