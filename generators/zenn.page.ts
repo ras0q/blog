@@ -17,7 +17,7 @@ export default async function* () {
           tags: ["zenn"],
           date: new Date(item.pubDate ?? ""),
           content: item.contentSnippet ?? "",
-          thumbnail: item.enclosure!.url,
+          thumbnail: item.enclosure?.url ?? "",
         } satisfies Post)
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
