@@ -1,8 +1,9 @@
+import { Post } from "../generators/types.d.ts";
 import PageData from "./libs/PageData.tsx";
 
 export const layout = "base.tsx";
 
-export default (data: Lume.Data) => (
+export default (data: Lume.Data & Post) => (
   <>
     <article class="space-y-4xl">
       <section class="space-y-2xl">
@@ -22,12 +23,8 @@ export default (data: Lume.Data) => (
         )}
       </section>
       <hr />
-      <div
-        class="prose"
-        dangerouslySetInnerHTML={{
-          __html: String(data.content),
-        }}
-      >
+      <div class="break-all whitespace-pre-wrap">
+        {data.content?.replaceAll("\n\n", "\n") ?? "Empty"}
       </div>
     </article>
   </>

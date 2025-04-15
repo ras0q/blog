@@ -16,12 +16,12 @@ export default function* ({ search }: Lume.Data) {
     query: "type!=tag",
   } satisfies Data;
 
-  for (const tag of search.values("tags")) {
+  for (const tag of search.values<string>("tags")) {
     yield {
       url: `/tags/${tag}/`,
       title: `Tag - #${tag}`,
       type: "tag",
-      query: tag as string,
+      query: tag,
     } satisfies Data;
   }
 }
