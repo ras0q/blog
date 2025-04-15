@@ -3,7 +3,6 @@ name: Blog Post Generator
 on:
   issues:
     types:
-      - opened
       - edited
       - closed
       - reopened
