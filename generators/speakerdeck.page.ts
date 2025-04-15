@@ -13,16 +13,15 @@ export default async function* () {
     }).parseURL("https://speakerdeck.com/ras0q.rss")
   ).items
     .map(
-      (item) =>
-        ({
-          title: item.title!,
-          url: `/external/speakerdeck/${encodeURIComponent(item.guid!)}/`,
-          redirectURL: item.link!,
-          tags: ["speakerdeck"],
-          date: new Date(item.pubDate ?? ""),
-          content: item.contentSnippet ?? "",
-          thumbnail: item["media:content"].$.url,
-        } satisfies Post)
+      (item) => ({
+        title: `[Speaker Deck] ${item.title}`,
+        url: `/external/speakerdeck${new URL(item.link!).pathname}/`,
+        redirectURL: item.link!,
+        tags: ["speakerdeck"],
+        date: new Date(item.pubDate ?? ""),
+        content: item.contentSnippet ?? "",
+        thumbnail: item["media:content"].$.url,
+      } satisfies Post),
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 

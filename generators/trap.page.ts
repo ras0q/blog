@@ -13,16 +13,15 @@ export default async function* () {
     }).parseURL("https://trap.jp/author/Ras/rss")
   ).items
     .map(
-      (item) =>
-        ({
-          title: item.title!,
-          url: `/external/trap/${encodeURIComponent(item.guid!)}/`,
-          redirectURL: item.link!,
-          tags: ["trap"],
-          date: new Date(item.pubDate ?? ""),
-          content: item.contentSnippet ?? "",
-          thumbnail: item["media:content"].$.url,
-        } satisfies Post)
+      (item) => ({
+        title: `[traP] ${item.title}`,
+        url: `/external/trap${new URL(item.link!).pathname}`,
+        redirectURL: item.link!,
+        tags: ["trap"],
+        date: new Date(item.pubDate ?? ""),
+        content: item.contentSnippet ?? "",
+        thumbnail: item["media:content"].$.url,
+      } satisfies Post),
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
