@@ -1,6 +1,6 @@
 ---
 title: "GitHub IssueをCMSにした"
-draft: true
+draft: false
 ---
 
 ブログを書くのに[LumeCMS](https://lume.land/cms/)を使っていたんですが、特にモバイルで書くのが辛くてモチベーションが上がりづらい状況にありました。一応LumeCMSの機能でBasic認証をかけられるのでかけていたんですが、iOSだとなぜかページ遷移ごとにパスワードが要求され、そこそこストレスだったことが大きいです。
