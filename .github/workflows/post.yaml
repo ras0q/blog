@@ -12,7 +12,7 @@ on:
 
 jobs:
   generate_post:
-    if: contains(github.event.issue.labels.*.name, "post")
+    if: contains(github.event.issue.labels.*.name, 'post')
     runs-on: ubuntu-latest
     permissions:
       contents: write
