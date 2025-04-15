@@ -12,11 +12,12 @@ export default (data: Lume.Data) => {
 
   return (
     <div class="space-y-4xl">
+      <h1 class="text-4xl text-center">{data.title}</h1>
       <section>
         <div id="search" class="min-h-51.2px"></div>
       </section>
       <section class="flex flex-wrap justify-center gap-xs text-2xl">
-        {data.search.values<string>("tags").map((tag) => (
+        {data.search.values<string>("tags").toSorted().map((tag) => (
           <Tag key={tag} tag={tag} />
         ))}
       </section>

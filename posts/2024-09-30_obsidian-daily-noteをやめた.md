@@ -2,7 +2,7 @@
 title: Obsidian Daily Noteをやめた
 draft: false
 tags:
-  - obsidian
+  - Obsidian
 ---
 日常のメモやドキュメント管理に[Obsidian](https://obsidian.md/)を使っている。
 

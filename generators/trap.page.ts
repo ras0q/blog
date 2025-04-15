@@ -17,7 +17,7 @@ export default async function* () {
         title: `[traP] ${item.title}`,
         url: `/external/trap${new URL(item.link!).pathname}`,
         redirectURL: item.link!,
-        tags: ["trap"],
+        tags: ["traP"],
         date: new Date(item.pubDate ?? ""),
         content: item.contentSnippet ?? "",
         thumbnail: item["media:content"].$.url,

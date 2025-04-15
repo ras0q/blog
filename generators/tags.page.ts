@@ -18,8 +18,8 @@ export default function* ({ search }: Lume.Data) {
 
   for (const tag of search.values<string>("tags")) {
     yield {
-      url: `/tags/${tag}/`,
-      title: `Tag - #${tag}`,
+      url: `/tags/${tag.toLowerCase()}/`,
+      title: `#${tag}`,
       type: "tag",
       query: tag,
     } satisfies Data;

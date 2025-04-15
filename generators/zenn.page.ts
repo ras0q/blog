@@ -15,7 +15,7 @@ export default async function* () {
         title: `[Zenn] ${item.title}`,
         url: `/external/zenn${new URL(item.link!).pathname}/`,
         redirectURL: item.link!,
-        tags: ["zenn"],
+        tags: ["Zenn"],
         date: new Date(item.pubDate ?? ""),
         content: item.contentSnippet ?? "",
         thumbnail: item.enclosure?.url ?? "",

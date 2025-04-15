@@ -80,7 +80,7 @@ site.data(
 );
 
 site.data("layout", "markdown.tsx", "/posts");
-site.data("tags", ["diary"], "/posts");
+site.data("tags", ["Diary"], "/posts");
 
 site.copy("public", "");
 
