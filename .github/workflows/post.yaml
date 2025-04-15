@@ -65,5 +65,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "action@github.com"
           git add "$FILE_PATH"
-          git commit -m "Update post from #$NUMBER ($ACTION)"
+          git commit -m "Issue #$NUMBER $ACTION: update post"
           git push origin HEAD
