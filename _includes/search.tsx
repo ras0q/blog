@@ -33,7 +33,12 @@ export default (data: Lume.Data) => {
               <div>
                 <PageData {...data} />
                 <div class="break-all whitespace-pre-wrap line-clamp-3">
-                  {data.content?.replaceAll("\n\n", "\n") ?? "Empty"}
+                  {data.content
+                    ?.replaceAll("\n\n", "\n")
+                    .split("\n")
+                    .slice(0, 4)
+                    .join("\n") ??
+                    "Empty"}
                 </div>
               </div>
               {data.thumbnail && (
