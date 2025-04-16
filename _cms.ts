@@ -67,6 +67,6 @@ cms.collection({
   nameField: (changes) => `${nowDate}_${changes.title}`,
 });
 
-cms.upload("uploads: Uploaded files", "src:public", "/");
+cms.upload("uploads: Uploaded files", "src:posts/public", "/");
 
 export default cms;

@@ -82,7 +82,7 @@ site.data(
 site.data("layout", "markdown.tsx", "/posts");
 site.data("tags", ["Diary"], "/posts");
 
-site.copy("public", "");
+site.copy("posts/public", "");
 
 site.parseBasename((basename) => ({
   date: basename.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? undefined,
