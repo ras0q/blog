@@ -1,3 +1,3 @@
 [submodule "posts"]
 	path = posts
-	url = git@github.com:ras0q/blog-posts.git
+	url = https://github.com/ras0q/blog-posts.git
