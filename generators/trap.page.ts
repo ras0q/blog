@@ -1,7 +1,7 @@
 import RSSParser from "rss-parser";
 import { Post } from "./types.d.ts";
 
-export const layout = "external.tsx";
+export const layout = "markdown.tsx";
 export const renderOrder = -1;
 
 export default async function* () {

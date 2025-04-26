@@ -4,6 +4,6 @@ export type Post = {
   redirectURL: string;
   tags: string[];
   date: Date;
-  content: string;
-  thumbnail: string;
+  content?: string;
+  thumbnail?: string;
 };

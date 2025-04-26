@@ -1,7 +1,7 @@
 import RSSParser from "rss-parser";
 import { Post } from "./types.d.ts";
 
-export const layout = "external.tsx";
+export const layout = "markdown.tsx";
 export const renderOrder = -1;
 
 export default async function* () {
@@ -19,7 +19,7 @@ export default async function* () {
         redirectURL: item.link!,
         tags: ["SpeakerDeck"],
         date: new Date(item.pubDate ?? ""),
-        content: item.contentSnippet ?? "",
+        content: item.contentSnippet,
         thumbnail: item["media:content"].$.url,
       } satisfies Post),
     )

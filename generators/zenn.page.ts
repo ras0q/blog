@@ -1,7 +1,7 @@
 import RSSParser from "rss-parser";
 import { Post } from "./types.d.ts";
 
-export const layout = "external.tsx";
+export const layout = "markdown.tsx";
 export const renderOrder = -1;
 
 export default async function* () {
@@ -17,8 +17,8 @@ export default async function* () {
         redirectURL: item.link!,
         tags: ["Zenn"],
         date: new Date(item.pubDate ?? ""),
-        content: item.contentSnippet ?? "",
-        thumbnail: item.enclosure?.url ?? "",
+        content: item.contentSnippet,
+        thumbnail: item.enclosure?.url,
       } satisfies Post),
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
