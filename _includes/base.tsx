@@ -10,16 +10,16 @@ export default (data: Lume.Data) => (
       <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
-    <body class="min-h-100svh overflow-y-scroll prose-neutral dark:prose-invert">
+    <body class="min-h-100svh overflow-y-scroll prose prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-800">
       <nav class="p-4xl flex flex-wrap justify-between">
-        <a href="/" class="text-xl font-bold">{siteTitle}</a>
+        <a href="/" class="text-xl font-bold decoration-none">{siteTitle}</a>
         <div class="space-x-xl">
           <a href="https://github.com/ras0q/blog">GitHub</a>
           <a href="/feed.rss">RSS</a>
         </div>
       </nav>
       <main
-        class="mx-auto max-w-[min(42rem,80svw)]"
+        class="mx-auto max-w-[min(70ch,80svw)]"
         dangerouslySetInnerHTML={{ __html: String(data.content) }}
       >
       </main>

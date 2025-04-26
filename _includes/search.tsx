@@ -12,7 +12,7 @@ export default (data: Lume.Data) => {
 
   return (
     <div class="space-y-4xl">
-      <h1 class="text-4xl text-center">{data.title}</h1>
+      <h1 class="text-center m-0">{data.title}</h1>
       <section>
         <div id="search" class="min-h-51.2px"></div>
       </section>
@@ -26,7 +26,7 @@ export default (data: Lume.Data) => {
           data,
         ) => (
           <article>
-            <h2 class="text-2xl">
+            <h2 class="text-2xl m-0">
               <a href={data.url}>{data.title ?? "Untitled"}</a>
             </h2>
             <div class="flex justify-between gap-lg">

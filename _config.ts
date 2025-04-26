@@ -20,7 +20,11 @@ const site = lume({}, {
     plugins: [
       container,
       [linkAttributes, {
-        attrs: { target: "_blank", ref: "noopener" },
+        attrs: {
+          class: "decoration-underline",
+          target: "_blank",
+          ref: "noopener",
+        },
       }],
       mark,
     ],
