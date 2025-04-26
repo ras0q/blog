@@ -1,5 +1,5 @@
 export default ({ tag }: { tag: string }) => (
-  <a class="text-blue-5" href={`/tags/${tag}`}>
+  <a class="text-coolgray-500" href={`/tags/${tag}`}>
     #{tag}
   </a>
 );
