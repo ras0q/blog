@@ -9,9 +9,10 @@ import remark from "lume/plugins/remark.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import unocss from "lume/plugins/unocss.ts";
 import unoConfig from "./uno.config.ts";
-import { siteLang, siteTitle } from "./_includes/libs/consts.ts";
 import { visit } from "unist-util-visit";
 
+export const siteTitle = "1245cal";
+const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
 
 const site = lume();

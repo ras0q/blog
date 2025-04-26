@@ -1,5 +1,4 @@
 import { Post } from "../generators/types.d.ts";
-import PageData from "./libs/PageData.tsx";
 
 export const layout = "base.tsx";
 
@@ -15,7 +14,7 @@ export default (data: Lume.Data & Post) => (
       )}
       <section>
         <h1 class="text-4xl">{data.title}</h1>
-        <PageData tags={data.tags} date={data.date} />
+        <data.comp.PageData {...data} />
         {data.redirectURL && (
           <a class="underline" href={data.redirectURL}>
             {data.redirectURL}

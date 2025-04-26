@@ -1,4 +1,4 @@
-import { siteTitle } from "./libs/consts.ts";
+import { siteTitle } from "../_config.ts";
 
 export default (data: Lume.Data) => (
   <html lang="ja">
