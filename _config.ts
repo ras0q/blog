@@ -5,34 +5,36 @@ import jsx from "lume/plugins/jsx_preact.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import metas, { MetaData } from "lume/plugins/metas.ts";
 import pagefind from "lume/plugins/pagefind.ts";
+import remark from "lume/plugins/remark.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import unocss from "lume/plugins/unocss.ts";
-import container from "markdown-it-container";
-import linkAttributes from "markdown-it-link-attributes";
-import mark from "markdown-it-mark";
 import unoConfig from "./uno.config.ts";
 import { siteLang, siteTitle } from "./_includes/libs/consts.ts";
+import { visit } from "unist-util-visit";
 
 const isProd = Deno.env.get("DENO_ENV") === "production";
 
-const site = lume({}, {
-  markdown: {
-    plugins: [
-      container,
-      [linkAttributes, {
-        attrs: {
-          class: "decoration-underline",
-          target: "_blank",
-          ref: "noopener",
-        },
-      }],
-      mark,
-    ],
-  },
-});
+const site = lume();
 
-// Extensions
-site.use(jsx()).use(metas());
+// Tempate engines
+site
+  .use(remark({
+    remarkPlugins: [
+      () => (tree) => {
+        visit(tree, "link", (node) => {
+          node.data ??= {};
+          node.data.hProperties ??= {};
+          node.data.hProperties.class = "decoration-underline";
+          node.data.hProperties.target = "_blank";
+          node.data.hProperties.rel = "noopener";
+        });
+      },
+    ],
+  }))
+  .use(jsx());
+
+// HTML
+site.use(metas());
 
 // Generators
 site

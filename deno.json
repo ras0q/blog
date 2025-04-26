@@ -5,10 +5,8 @@
   ],
   "imports": {
     "lume/": "https://deno.land/x/lume@v2.3.2/",
-    "markdown-it-container": "npm:markdown-it-container@^4.0.0",
-    "markdown-it-link-attributes": "npm:markdown-it-link-attributes@^4.0.1",
-    "markdown-it-mark": "npm:markdown-it-mark@^4.0.0",
     "rss-parser": "npm:rss-parser@^3.13.0",
+    "unist-util-visit": "npm:unist-util-visit@^5.0.0",
     "unocss": "npm:unocss@0.62.3"
   },
   "tasks": {
