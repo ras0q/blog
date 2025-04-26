@@ -14,7 +14,18 @@ export default (data: Lume.Data) => {
     <div class="space-y-4xl">
       <h1 class="text-center m-0">{data.title}</h1>
       <section>
-        <div id="search" class="min-h-51.2px"></div>
+        <div
+          id="search"
+          class="min-h-51.2px"
+          style={{
+            "--pagefind-ui-primary": "var(--un-prose-body)",
+            "--pagefind-ui-text": "var(--un-prose-body)",
+            "--pagefind-ui-background": "var(--un-prose-bg-soft)",
+            "--pagefind-ui-border": "var(--un-prose-borders)",
+            "--pagefind-ui-tag": "var(--un-prose-bg-borders)",
+          }}
+        >
+        </div>
       </section>
       <section class="flex flex-wrap justify-center gap-xs text-2xl">
         {data.search.values<string>("tags").toSorted().map((tag) => (
