@@ -1,4 +1,4 @@
-export const layout = "search.tsx";
+export const layout = "home.tsx";
 export const tags = ["tag"];
 
 type Data = {

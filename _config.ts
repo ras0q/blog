@@ -86,7 +86,7 @@ site.data(
   } satisfies MetaData,
 );
 
-site.data("layout", "markdown.tsx", "/posts");
+site.data("layout", "post.tsx", "/posts");
 site.data("tags", ["Diary"], "/posts");
 
 site.copy("posts/public", "");

@@ -1,7 +1,6 @@
 import { Post } from "../generators/types.d.ts";
 
 export const layout = "base.tsx";
-export const title = "Home";
 
 export default (data: Lume.Data) => {
   if (data.query === undefined) {
