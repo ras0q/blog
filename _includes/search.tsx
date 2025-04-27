@@ -9,7 +9,7 @@ export default (data: Lume.Data) => {
   }
 
   return (
-    <div class="space-y-4xl">
+    <div class="flex flex-col gap-4xl">
       <h1 class="text-center m-0">{data.title}</h1>
       <section>
         <div
@@ -30,7 +30,7 @@ export default (data: Lume.Data) => {
           <data.comp.Tag key={tag} tag={tag} />
         ))}
       </section>
-      <section class="space-y-4xl">
+      <section class="flex flex-col gap-4xl">
         {data.search.pages<Post>(data.query, "date=desc").map((
           data,
         ) => (

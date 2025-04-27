@@ -13,7 +13,7 @@ export default (data: Lume.Data) => (
     <body class="min-h-100svh overflow-y-scroll prose prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-800">
       <nav class="p-4xl flex flex-wrap justify-between">
         <a href="/" class="text-xl font-bold decoration-none">{siteTitle}</a>
-        <div class="space-x-xl">
+        <div class="flex gap-xl">
           <a
             href="https://github.com/ras0q/blog"
             target="_blank"
