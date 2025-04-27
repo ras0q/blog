@@ -1,7 +1,7 @@
 import {
   defineConfig,
   presetTypography,
-  presetUno,
+  presetWind3,
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
@@ -12,7 +12,7 @@ export default defineConfig<object>({
     "prose": "prose max-w-full!",
   },
   presets: [
-    presetUno({
+    presetWind3({
       dark: "media",
     }),
     presetTypography({
