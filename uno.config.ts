@@ -1,24 +1,22 @@
-import { defineConfig, presetMini, presetTypography } from "unocss";
+import { defineConfig, presetTypography, presetWind3 } from "unocss";
 
 export default defineConfig<object>({
-  rules: [
-    ['object-cover', {'object-fit': 'cover'}],
-    [/^line-clamp-(\d+)$/, ([, v]) => ({
-      'overflow': 'hidden',
-      'display': '-webkit-box',
-      '-webkit-box-orient': 'vertical',
-      '-webkit-line-clamp': v,
-      'line-clamp': v,
-    }), { autocomplete: ['line-clamp', 'line-clamp-<num>'] }],
+  preflights: [
+    {
+      getCSS: () => `
+        /* Minimum Reset CSS */
+        * {
+          margin: 0;
+          box-sizing: border-box;
+        }
+      `,
+    },
   ],
   shortcuts: {
     // override typography max-width
     "prose": "prose max-w-full!",
   },
   presets: [
-    presetMini({
-      dark: "media",
-    }),
     presetTypography({
       cssExtend: {
         "a": {
@@ -28,6 +26,10 @@ export default defineConfig<object>({
           "text-decoration": "underline",
         },
       },
+    }),
+    presetWind3({
+      dark: "media",
+      preflight: "on-demand",
     }),
   ],
 });

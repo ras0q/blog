@@ -60,7 +60,6 @@ site
     unocss({
       options: unoConfig,
       transformers: unoConfig.transformers,
-      reset: "tailwind-compat",
     }),
   );
 
