@@ -8,6 +8,7 @@ export default (data: Lume.Data & Post) => (
       <img
         src={data.thumbnail}
         alt="thumbnail"
+        loading="lazy"
         class="w-full min-w-full aspect-ratio-[5/2] object-cover"
       />
     )}
