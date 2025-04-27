@@ -4,6 +4,7 @@ import feed from "lume/plugins/feed.ts";
 import jsx from "lume/plugins/jsx_preact.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import metas, { MetaData } from "lume/plugins/metas.ts";
+import minifyHTML from "lume/plugins/minify_html.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import remark from "lume/plugins/remark.ts";
 import sitemap from "lume/plugins/sitemap.ts";
@@ -17,7 +18,7 @@ const isProd = Deno.env.get("DENO_ENV") === "production";
 
 const site = lume();
 
-// Tempate engines
+// Generate HTML files
 site
   .use(remark({
     remarkPlugins: [
@@ -32,12 +33,10 @@ site
       },
     ],
   }))
-  .use(jsx());
+  .use(jsx())
+  .use(metas());
 
-// HTML
-site.use(metas());
-
-// Generators
+// Generate other files
 site
   .use(codeHighlight({
     theme: {
@@ -63,12 +62,16 @@ site
     }),
   );
 
-// Bundlers
-site.use(lightningCss({
-  options: {
-    minify: isProd,
-  },
-}));
+// Optimization
+if (isProd) {
+  site
+    .use(lightningCss({
+      options: {
+        minify: true,
+      },
+    }))
+    .use(minifyHTML());
+}
 
 site.data(
   "metas",
