@@ -21,14 +21,20 @@ const site = lume();
 // Generate HTML files
 site
   .use(remark({
-    remarkPlugins: [
+    rehypePlugins: [
       () => (tree) => {
-        visit(tree, "link", (node) => {
-          node.data ??= {};
-          node.data.hProperties ??= {};
-          node.data.hProperties.class = "decoration-underline";
-          node.data.hProperties.target = "_blank";
-          node.data.hProperties.rel = "noopener";
+        visit(tree, "element", (node) => {
+          switch (node.tagName) {
+            case "img": {
+              node.properties.loading = "lazy";
+              break;
+            }
+            case "a": {
+              node.properties.class = "decoration-underline";
+              node.properties.target = "_blank";
+              node.properties.rel = "noopener";
+            }
+          }
         });
       },
     ],
