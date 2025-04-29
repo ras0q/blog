@@ -7,7 +7,7 @@
     "lume/": "https://deno.land/x/lume@v2.5.3/",
     "rss-parser": "npm:rss-parser@3.13.0",
     "unist-util-visit": "npm:unist-util-visit@5.0.0",
-    "unocss": "npm:unocss@66.0.0"
+    "unocss": "npm:unocss@66.1.0-beta.12"
   },
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
