@@ -1,4 +1,9 @@
-import { defineConfig, presetTypography, presetWind3 } from "unocss";
+import {
+  defineConfig,
+  presetTypography,
+  presetWind3,
+  transformerDirectives,
+} from "unocss";
 
 export default defineConfig<object>({
   preflights: [
@@ -11,7 +16,9 @@ export default defineConfig<object>({
         }
 
         body {
-          @apply font-sans line-height-normal min-h-100svh overflow-y-scroll;
+          min-height: 100svh;
+          line-height: 1.5;
+          overflow-y: scroll;
           overflow-wrap: anywhere;
           word-break: normal;
           line-break: strict;
@@ -32,8 +39,8 @@ export default defineConfig<object>({
         "a:hover": {
           "text-decoration": "underline",
         },
-        "code": {
-          "white-space": "normal !important",
+        ":not(pre) > code": {
+          "white-space": "normal",
         },
       },
     }),
@@ -41,5 +48,8 @@ export default defineConfig<object>({
       dark: "media",
       preflight: "on-demand",
     }),
+  ],
+  transformers: [
+    transformerDirectives(),
   ],
 });
