@@ -9,6 +9,13 @@ export default defineConfig<object>({
           margin: 0;
           box-sizing: border-box;
         }
+
+        body {
+          @apply font-sans line-height-normal min-h-100svh overflow-y-scroll;
+          overflow-wrap: anywhere;
+          word-break: normal;
+          line-break: strict;
+        }
       `,
     },
   ],
@@ -24,6 +31,9 @@ export default defineConfig<object>({
         },
         "a:hover": {
           "text-decoration": "underline",
+        },
+        "code": {
+          "white-space": "normal !important",
         },
       },
     }),
