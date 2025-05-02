@@ -5,7 +5,7 @@ export const layout = "post.tsx";
 export const renderOrder = -1;
 
 export default async function* () {
-  const zennPosts = (
+  const posts = (
     await new RSSParser().parseURL(
       "https://zenn.dev/ras96/feed?include_scraps=1&all=1",
     )
@@ -23,7 +23,7 @@ export default async function* () {
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
-  for (const post of zennPosts) {
+  for (const post of posts) {
     yield post;
   }
 }

@@ -8,19 +8,21 @@ export default async function* () {
   const posts = (
     await new RSSParser({
       customFields: {
-        item: ["media:content"],
+        item: ["media:thumbnail"],
       },
-    }).parseURL("https://trap.jp/author/Ras/rss")
+    }).parseURL(
+      "https://www.reddit.com/user/ras0q/submitted/.rss",
+    )
   ).items
     .map(
       (item) => ({
-        title: `[traP] ${item.title}`,
-        url: `/external/trap${new URL(item.link!).pathname}`,
+        title: `[Reddit] ${item.title}`,
+        url: `/external/reddit${new URL(item.link!).pathname}`,
         redirectURL: item.link!,
-        tags: ["traP"],
+        tags: ["Reddit"],
         date: new Date(item.pubDate ?? ""),
-        content: item.contentSnippet ?? "",
-        thumbnail: item["media:content"].$.url,
+        content: item.contentSnippet,
+        thumbnail: item["media:thumbnail"]?.$.url,
       } satisfies Post),
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
