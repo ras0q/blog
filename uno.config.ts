@@ -26,10 +26,6 @@ export default defineConfig<object>({
       `,
     },
   ],
-  shortcuts: {
-    // override typography max-width
-    "prose": "prose max-w-full!",
-  },
   presets: [
     presetTypography({
       cssExtend: {

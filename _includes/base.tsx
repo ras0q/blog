@@ -10,7 +10,7 @@ export default (data: Lume.Data) => (
       <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
-    <body class="font-sans prose prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-800">
+    <body class="font-sans prose max-w-full prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-800">
       <nav class="p-4xl flex justify-between">
         <a href="/" class="text-xl font-bold decoration-none">{siteTitle}</a>
         <div class="flex gap-xl">
@@ -30,10 +30,9 @@ export default (data: Lume.Data) => (
       >
       </main>
       <footer class="sticky top-100svh p-4xl">
-        <div class="flex justify-end">
-          ©&nbsp;2024&nbsp;
-          <a href="https://ras0q.com" class="underline">@ras0q</a>&nbsp;Powered
-          by&nbsp;🔥<a href="https://lume.land" class="underline">Lume</a>
+        <div class="flex justify-end whitespace-pre">
+          © 2024 <a href="https://ras0q.com">@ras0q</a>{" "}
+          Powered by 🔥<a href="https://lume.land">Lume</a>
         </div>
       </footer>
     </body>

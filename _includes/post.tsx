@@ -16,9 +16,10 @@ export default (data: Lume.Data & Post) => (
       <h1 class="text-4xl">{data.title}</h1>
       <data.comp.PageData {...data} />
       {data.redirectURL && (
-        <a class="underline" href={data.redirectURL}>
-          {data.redirectURL}
-        </a>
+        <span>
+          Original:{" "}
+          <a href={data.redirectURL}>{new URL(data.redirectURL).host}</a>
+        </span>
       )}
     </section>
     <hr />
