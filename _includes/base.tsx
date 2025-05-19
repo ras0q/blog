@@ -4,8 +4,7 @@ export default (data: Lume.Data) => (
   <html lang="ja">
     <head>
       <title>{`${data.title} | ${siteTitle}`}</title>
-      <link rel="stylesheet" href="/code_light.css" />
-      <link rel="stylesheet" href="/unocss.css" />
+      <link rel="stylesheet" href="/style.css" />
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>

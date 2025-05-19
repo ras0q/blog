@@ -9,20 +9,20 @@ export default defineConfig<object>({
   preflights: [
     {
       getCSS: () => `
-        /* Minimum Reset CSS */
-        * {
-          margin: 0;
-          box-sizing: border-box;
-        }
+/* Minimum Reset CSS */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
 
-        body {
-          min-height: 100svh;
-          line-height: 1.5;
-          overflow-y: scroll;
-          overflow-wrap: anywhere;
-          word-break: normal;
-          line-break: strict;
-        }
+body {
+  min-height: 100svh;
+  line-height: 1.5;
+  overflow-y: scroll;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
+}
       `,
     },
   ],

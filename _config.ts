@@ -1,7 +1,7 @@
 import lume from "lume/mod.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import feed from "lume/plugins/feed.ts";
-import jsx from "lume/plugins/jsx_preact.ts";
+import jsx from "lume/plugins/jsx.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import metas, { MetaData } from "lume/plugins/metas.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
@@ -47,7 +47,6 @@ site
   .use(codeHighlight({
     theme: {
       name: "atom-one-light",
-      path: "/code_light.css",
     },
   }))
   .use(
