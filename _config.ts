@@ -93,6 +93,8 @@ site.data(
   } satisfies MetaData,
 );
 
+site.ignore("README.md");
+
 site.data("layout", "post.tsx", "/posts");
 site.data("tags", ["Diary"], "/posts");
 
