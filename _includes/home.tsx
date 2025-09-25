@@ -18,7 +18,7 @@ export default (data: Lume.Data) => {
             "--pagefind-ui-primary": "var(--un-prose-body)",
             "--pagefind-ui-text": "var(--un-prose-body)",
             "--pagefind-ui-background":
-              "color-mix(in srgb, var(--un-prose-pre-bg) 50%, transparent)",
+              "color-mix(in srgb, var(--un-prose-td-borders) 50%, transparent)",
             "--pagefind-ui-border": "var(--un-prose-td-borders)",
             "--pagefind-ui-tag": "var(--un-prose-td-borders)",
           }}
