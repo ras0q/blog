@@ -9,7 +9,7 @@ export default (data: Lume.Data) => (
       <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
-    <body class="font-sans prose max-w-full prose-neutral dark:prose-invert">
+    <body class="font-sans prose max-w-full prose-neutral dark:prose-invert bg-white dark:bg-neutral-700">
       <nav class="p-4xl flex justify-between">
         <a href="/" class="text-xl font-bold decoration-none">{siteTitle}</a>
         <div class="flex gap-xl">

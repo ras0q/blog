@@ -24,7 +24,7 @@ export default (data: Lume.Data & Post) => (
     </section>
     <hr />
     <div
-      class="prose mx-auto"
+      class="mx-auto"
       dangerouslySetInnerHTML={{
         // FIXME: HTMLではない複数行の文字列が渡された時に改行が無視される
         __html: String(data.content ?? "Empty"),
