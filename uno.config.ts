@@ -40,6 +40,9 @@ body {
         ":not(pre) > code": {
           "white-space": "normal",
         },
+        "img": {
+          "max-width": "100%",
+        },
       },
     }),
     presetWind3({
