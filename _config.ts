@@ -98,6 +98,7 @@ site.ignore("README.md");
 site.data("layout", "post.tsx", "/posts");
 site.data("tags", ["Diary"], "/posts");
 
+site.copy("public/_redirects", "_redirects");
 site.copy("posts/public", "");
 
 site.parseBasename((basename) => ({
