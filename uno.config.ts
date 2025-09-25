@@ -22,6 +22,8 @@ body {
   overflow-wrap: anywhere;
   word-break: normal;
   line-break: strict;
+  /* Ref: https://www.transparenttextures.com/groovepaper.html */
+  background-image: url("/groovepaper.png");
 }
       `,
     },
