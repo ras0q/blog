@@ -14,7 +14,7 @@ export default async function* () {
   ).items
     .map(
       (item) => ({
-        title: `[traP] ${item.title}`,
+        title: `[🔗traP] ${item.title}`,
         url: `/external/trap${new URL(item.link!).pathname}`,
         redirectURL: item.link!,
         tags: ["traP"],

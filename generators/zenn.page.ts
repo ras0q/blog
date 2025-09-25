@@ -12,7 +12,7 @@ export default async function* () {
   ).items
     .map(
       (item) => ({
-        title: `[Zenn] ${item.title}`,
+        title: `[🔗Zenn] ${item.title}`,
         url: `/external/zenn${new URL(item.link!).pathname}/`,
         redirectURL: item.link!,
         tags: ["Zenn"],

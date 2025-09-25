@@ -14,7 +14,7 @@ export default async function* () {
   ).items
     .map(
       (item) => ({
-        title: `[Speaker Deck] ${item.title}`,
+        title: `[🔗Speaker Deck] ${item.title}`,
         url: `/external/speakerdeck${new URL(item.link!).pathname}/`,
         redirectURL: item.link!,
         tags: ["SpeakerDeck"],
