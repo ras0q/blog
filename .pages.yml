@@ -32,3 +32,4 @@ content:
         label: Draft
         type: boolean
         default: true
+    filename: "{year}-{month}-{day}-{title}.md"
