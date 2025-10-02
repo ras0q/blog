@@ -3,7 +3,7 @@
 media:
   - name: images
     label: Images
-    input: posts/public
+    input: public
     output: /
 
 content:

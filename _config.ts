@@ -101,7 +101,6 @@ site.data("tags", ["Diary"], "/posts");
 site.copy("public/", "");
 // NOTE: files starting with `_` will not be copied automatically.
 site.copy("public/_redirects", "_redirects");
-site.copy("posts/public", "");
 
 site.parseBasename((basename) => ({
   date: basename.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? undefined,
