@@ -1,3 +1,4 @@
+import { slugify } from "../_config.ts";
 import { Post } from "../generators/types.d.ts";
 
 export const layout = "base.tsx";
@@ -37,8 +38,11 @@ export default (data: Lume.Data) => {
             isExternal: data.url.startsWith("/external"),
           }))
           .map((data) => (
-            <article>
-              <h2 class="text-2xl m-0">
+            <article style={{ "view-transition-name": slugify(data.url) }}>
+              <h2
+                class="text-2xl m-0"
+                style={{ "view-transition-name": slugify(data.url) + "_title" }}
+              >
                 <a
                   href={data.url}
                   rel={data.isExternal ? "noopener" : undefined}

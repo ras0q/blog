@@ -16,6 +16,9 @@ export const siteTitle = "1245cal";
 const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
 
+export const slugify = (path: string) =>
+  encodeURIComponent(path).replaceAll("%", "_");
+
 const site = lume();
 
 // Generate HTML files

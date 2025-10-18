@@ -25,6 +25,10 @@ body {
   /* Ref: https://www.transparenttextures.com/groovepaper.html */
   background-image: url("/groovepaper.png");
 }
+
+@view-transition {
+  navigation: auto;
+}
       `,
     },
   ],
