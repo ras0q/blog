@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json",
+  "nodeModulesDir": "auto",
+  "exclude": [
+    "node_modules"
+  ],
+  "imports": {
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.0/",
+    "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.12/jsx-runtime.ts",
+    "rss-parser": "npm:rss-parser@3.13.0",
+    "unist-util-visit": "npm:unist-util-visit@5.0.0",
+    "unocss": "npm:unocss@66.5.4"
+  },
+  "tasks": {
+    "lume": {
+      "description": "Run Lume command",
+      "command": "deno run -P=lume lume/cli.ts"
+    },
+    "build": {
+      "description": "Build the site for production",
+      "command": "deno task lume"
+    },
+    "serve": {
+      "description": "Run and serve the site for development",
+      "command": "deno task lume -s"
+    }
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "lume",
+    "types": [
+      "lume/types.ts"
+    ]
+  },
+  "unstable": [
+    "temporal",
+    "fmt-component"
+  ],
+  "fmt": {
+    "exclude": [
+      "posts/"
+    ]
+  },
+  "lint": {
+    "plugins": [
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.0/lint.ts"
+    ],
+    "rules": {
+      "exclude": [
+        "no-import-prefix"
+      ]
+    }
+  },
+  "permissions": {
+    "lume": {
+      "read": true,
+      "write": [
+        "./"
+      ],
+      "import": [
+        "cdn.jsdelivr.net:443",
+        "jsr.io:443",
+        "deno.land:443"
+      ],
+      "net": [
+        "0.0.0.0",
+        "jsr.io:443",
+        "cdn.jsdelivr.net:443",
+        "data.jsdelivr.com:443",
+        "registry.npmjs.org:443",
+        "www.reddit.com:443",
+        "zenn.dev:443",
+        "trap.jp:443",
+        "speakerdeck.com:443"
+      ],
+      "env": true,
+      "run": true,
+      "ffi": true,
+      "sys": true
+    }
+  },
+  "lock": false
+}

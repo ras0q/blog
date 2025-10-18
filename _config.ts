@@ -49,15 +49,6 @@ site
       name: "atom-one-light",
     },
   }))
-  .use(
-    feed({
-      query: "type!=tag",
-      info: {
-        title: siteTitle,
-        lang: siteLang,
-      },
-    }),
-  )
   .use(pagefind())
   .use(sitemap())
   .use(
@@ -77,6 +68,18 @@ if (isProd) {
     }))
     .use(minifyHTML());
 }
+
+// Feed
+site
+  .use(
+    feed({
+      query: "type!=tag",
+      info: {
+        title: siteTitle,
+        lang: siteLang,
+      },
+    }),
+  );
 
 site.data(
   "metas",

@@ -36,4 +36,3 @@ jobs:
           git config --global user.email "action@github.com"
           git commit --allow-empty -m "Update posts: ${{ steps.pubdate.outputs.pubdate_iso }}"
           git push origin HEAD
-
