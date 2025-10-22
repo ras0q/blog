@@ -14,16 +14,20 @@ export default async function* () {
       "https://www.reddit.com/user/ras0q/submitted/.rss",
     )
   ).items
-    .map(
-      (item) => ({
-        title: `[🔗Reddit] ${item.title}`,
-        url: `/external/reddit${new URL(item.link!).pathname}`,
-        redirectURL: item.link!,
-        tags: ["Reddit"],
-        date: new Date(item.pubDate ?? ""),
-        content: item.contentSnippet,
-        thumbnail: item["media:thumbnail"]?.$.url,
-      } satisfies Post),
+    .flatMap(
+      (item) => (
+        !item.contentSnippet?.startsWith("[deleted]")
+          ? {
+            title: `[🔗Reddit] ${item.title}`,
+            url: `/external/reddit${new URL(item.link!).pathname}`,
+            redirectURL: item.link!,
+            tags: ["Reddit"],
+            date: new Date(item.pubDate ?? ""),
+            content: item.contentSnippet,
+            thumbnail: item["media:thumbnail"]?.$.url,
+          } satisfies Post
+          : []
+      ),
     )
     .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
