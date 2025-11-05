@@ -26,6 +26,39 @@ body {
   background-image: url("/groovepaper.png");
 }
 
+.linkcard {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.25rem 0;
+
+  & > img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    object-fit: contain;
+    aspect-ratio: 2 / 1;
+  }
+
+  & > div {
+    padding: 1rem;
+
+    & > a::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+    }
+
+    & > p {
+      margin: 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+    }
+  }
+}
+
 @view-transition {
   navigation: auto;
 }

@@ -103,16 +103,16 @@ site
             const title = escapeHtml(ogInfo.ogTitle || match.url);
             const description = escapeHtml(ogInfo.ogDescription || "");
             const image = ogInfo.ogImage?.at(0)?.url || "/fallback.svg";
-            const html = `<p alt="リンクカード">
-  <aside class="relative flex flex-wrap bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
-    <img src="${image}" alt="リンクカードのサムネイル" width="100%" loading="lazy" class="m-0 object-contain aspect-2/1">
-    <div class="p-lg">
-      <a href="${match.url}" target="_blank" rel="noopener" class="after:absolute after:inset-0 after:content-empty">${title}</a>
-      <p class="my-0 line-clamp-3">${description}</p>
-    </div>
-  </aside>
-  <a href="${match.url}" target="_blank" rel="noopener" class="block w-full text-right">${match.url}</a>
-</p>`;
+            const html = `
+<p><a href="${match.url}" target="_blank" rel="noopener">${match.url}</a></p>
+<aside class="linkcard bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
+  <img src="${image}" alt="${title}のサムネイル" loading="lazy">
+  <div>
+    <a href="${match.url}" target="_blank" rel="noopener">${title}</a>
+    <p>${description}</p>
+  </div>
+</aside>
+`;
 
             match.parent.children[match.index] = {
               type: "html",
