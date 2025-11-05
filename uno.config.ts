@@ -27,6 +27,7 @@ body {
 }
 
 .linkcard {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   margin: 1.25rem 0;
