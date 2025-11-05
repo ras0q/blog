@@ -14,7 +14,7 @@ export default function (data: Lume.Data & Post) {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#fff",
-        fontSize: 32,
+        fontSize: 40,
         padding: "2rem",
         position: "relative",
       }}
@@ -22,19 +22,10 @@ export default function (data: Lume.Data & Post) {
       <h1>{data.title}</h1>
       <div
         style={{
-          display: "flex",
-          gap: "8px",
-        }}
-      >
-        {data.tags.map((tag) => (
-          <div key={tag} style={{ display: "flex" }}>#{tag}</div>
-        ))}
-      </div>
-      <div
-        style={{
           position: "absolute",
           bottom: "1rem",
           right: "1rem",
+          fontSize: "4rem",
         }}
       >
         {siteTitle}
