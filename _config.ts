@@ -102,12 +102,11 @@ site
             const title = escapeHtml(ogInfo.ogTitle || match.url);
             const description = escapeHtml(ogInfo.ogDescription || "");
             const image = ogInfo.ogImage?.at(0)?.url || "/fallback.svg";
-            const ogUrl = ogInfo.ogUrl || match.url;
             const html = `<p alt="リンクカード">
   <aside class="relative flex flex-wrap bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
     <img src="${image}" alt="リンクカードのサムネイル" width="100%" loading="lazy" class="m-0 object-contain aspect-2/1">
     <div class="p-lg">
-      <a href="${ogUrl}" target="_blank" rel="noopener" class="after:absolute after:inset-0 after:content-empty">${title}</a>
+      <a href="${match.url}" target="_blank" rel="noopener" class="after:absolute after:inset-0 after:content-empty">${title}</a>
       <p class="my-0 line-clamp-3">${description}</p>
     </div>
   </aside>
