@@ -207,7 +207,7 @@ site.data(
     site: siteTitle,
     title: ({ title }) => `${title} | ${siteTitle}`,
     lang: siteLang,
-    description: "Rasによる日記です",
+    description: "エネルギー 1245cal (1袋当たり)",
     image: ({ url }) => url + "index.png",
     icon: "/favicon.svg",
     twitter: "@ras0q",
