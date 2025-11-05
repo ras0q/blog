@@ -1,0 +1,87 @@
+{
+  "https://youtu.be/6_M8d-AjjMo": {
+    "ogTitle": "traPodcast Vol.7 (ゲスト: Ras)",
+    "ogDescription": "traP部員によるtraP部員に向けた音声コンテンツ、traPodcastです。お久しぶりの宅録です！宅録だとなんか音声抜け発生するんですけど！ゆるせんおたよりフォームをここに乗っけたいんですが、URLを載せるためにはYoutubeの本人確認が必要らしくちょっと先延ばし中です。しゃべってるひと・Uzaki・Ras...",
+    "ogImage": [
+      {
+        "height": "720",
+        "url": "https://i.ytimg.com/vi/6_M8d-AjjMo/maxresdefault.jpg",
+        "width": "1280",
+        "type": "jpg"
+      }
+    ],
+    "ogUrl": "https://www.youtube.com/watch?v=6_M8d-AjjMo"
+  },
+  "https://trap.jp/post/2262/": {
+    "ogTitle": "部員の活動紹介サービス traPortfolio をリリースしました",
+    "ogDescription": "こんにちは、SysAd班 traPortfolioチームです。\n\n今回新たにSysAd班で traP部員用ポートフォリオサービス traPortfolio をリリースしたので、その紹介記事になります。\n\n\n\nサービス概要\n\n\ntraPortfolioは、traPに所属する各部員の活動内容をまとめたポートフォリオサービスです。\n\n\n部員は、外部向けサイトとは別に用意された部員用ダッシュボードで自身のプロフィールや大会出場履歴などの情報を入力します。1からポートフォリオをデザインする手間が省け、traP部員としての実績を外部に公開することができます。\n\n\nこちらのリンクからアクセスすることができます。\n\n\ntraPortfolio東京工業大学デジタル創作同好会traPに所属する各部員の活動内容をまとめたポートフォリオサービスです。traPortfolio\n\nまた、GitHubのリポジトリも公開しています。\n\n\n公開ページ\n\nhttps://github.com/traPtitech/traPortfolio-UI\n\nダッシュボード\n\nhttps://github.com/traPtitec",
+    "ogImage": [
+      {
+        "height": "1962",
+        "url": "https://trap.jp/content/images/2024/07/arc_dkvsg0un0h-1.png",
+        "width": "3308",
+        "type": "png"
+      }
+    ],
+    "ogUrl": "https://trap.jp/post/2262/"
+  },
+  "https://zenn.dev/psyto/articles/644ea0b95a548d": {
+    "ogTitle": "Anytype - オフライン中心のオープンソースNotion",
+    "ogImage": [
+      {
+        "url": "https://res.cloudinary.com/zenn/image/upload/s--kvuc3Znk--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:Anytype%2520-%2520%25E3%2582%25AA%25E3%2583%2595%25E3%2583%25A9%25E3%2582%25A4%25E3%2583%25B3%25E4%25B8%25AD%25E5%25BF%2583%25E3%2581%25AE%25E3%2582%25AA%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25B3%25E3%2582%25BD%25E3%2583%25BC%25E3%2582%25B9Notion%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:saito%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyL2Y2MjQwNTRiNmEuanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png?_a=BACAGSGT",
+        "type": "png"
+      }
+    ],
+    "ogUrl": "https://zenn.dev/psyto/articles/644ea0b95a548d"
+  },
+  "https://note.com/electrical_cat/n/nc1b8ea1543a6": {
+    "ogTitle": "メモアプリ放浪の旅：Notionを超えてAnytype｜Naoki |電電猫猫 ",
+    "ogDescription": "Notion最高！でも…  まず始めに誤解ないように言うが、私はNotionも大好きである。会社でもNotionを使っているし、Anytypeの前のメモ管理にはNotionを用いていた。Notionは大変素晴らしいサービスであり、特に以下の点で優れていると言えるだろう。    階層化されたメモ    外部ツールとの連携(API連携など)    クロスプラットフォーム    オンラインでの共同編集    柔軟でわかりやすいデータベース    MD記法が利用できる    etc    いずれをとっても他のメモアプリの追随を許さないほどの完成度を誇っていると感じる。こんなに素晴らしいNoti",
+    "ogImage": [
+      {
+        "url": "https://assets.st-note.com/production/uploads/images/148590316/rectangle_large_type_2_d85b508e912fe5d196322a61788d3454.png?fit=bounds&quality=85&width=1280",
+        "type": "png"
+      }
+    ],
+    "ogUrl": "https://note.com/electrical_cat/n/nc1b8ea1543a6"
+  },
+  "https://lume.land/cms/deployment/deno-deploy/": {
+    "ogTitle": "Deploy on Deno Deploy",
+    "ogDescription": "How to setup LumeCMS to use it on Deno Deploy",
+    "ogImage": [
+      {
+        "url": "https://lume.land/avatar.jpg",
+        "type": "jpg"
+      }
+    ],
+    "ogUrl": "https://lume.land/cms/deployment/deno-deploy/"
+  },
+  "https://github.com/ras0q/ras0q.com/pull/101": {
+    "ogTitle": "Fresh -> Vite by ras0q · Pull Request #101 · ras0q/ras0q.com",
+    "ogDescription": "💄 Add gradient border on hover\n💥 Use Vite instead of Fresh\n💥 Join works page to top\n💥 Serve nostr.json staticly\n🔥 Remove unused files\n♻️ Move sections to sections/\n🔧 Update config",
+    "ogImage": [
+      {
+        "height": "600",
+        "url": "https://opengraph.githubassets.com/fc1517def99fdeaba2536057841c2fc5bcd620e6922921694d2fd570f7097763/ras0q/ras0q.com/pull/101",
+        "width": "1200",
+        "alt": "💄 Add gradient border on hover\n💥 Use Vite instead of Fresh\n💥 Join works page to top\n💥 Serve nostr.json staticly\n🔥 Remove unused files\n♻️ Move sections to sections/\n🔧 Update config"
+      }
+    ],
+    "ogUrl": "https://github.com/ras0q/ras0q.com/pull/101"
+  },
+  "https://zenn.dev/ras96/articles/7815b8adb80ad3": {
+    "ogTitle": "Docker Composeの依存関係をグラフにする",
+    "ogImage": [
+      {
+        "url": "https://res.cloudinary.com/zenn/image/upload/s--hn9iQNLA--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:Docker%2520Compose%25E3%2581%25AE%25E4%25BE%259D%25E5%25AD%2598%25E9%2596%25A2%25E4%25BF%2582%25E3%2582%2592%25E3%2582%25B0%25E3%2583%25A9%25E3%2583%2595%25E3%2581%25AB%25E3%2581%2599%25E3%2582%258B%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:ras0q%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzY0N2Y1MjhiMzYuanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png?_a=BACAGSGT",
+        "type": "png"
+      }
+    ],
+    "ogUrl": "https://zenn.dev/ras96/articles/7815b8adb80ad3"
+  },
+  "https://www.icloud.com/shortcuts/6867d62935d742f6aba448aa17302c90": {
+    "ogTitle": "Shortcuts",
+    "ogDescription": "Unable to find the shortcut."
+  }
+}

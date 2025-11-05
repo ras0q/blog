@@ -11,16 +11,122 @@ import sitemap from "lume/plugins/sitemap.ts";
 import unocss from "lume/plugins/unocss.ts";
 import unoConfig from "./uno.config.ts";
 import { visit } from "unist-util-visit";
+import ogs from "open-graph-scraper";
+import type { OgObject } from "open-graph-scraper/types";
 
 export const siteTitle = "1245cal";
 const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
+const ogCachePath = ".cache/og.json";
 
-const site = lume();
+const site = lume({
+  watcher: {
+    ignore: [
+      ogCachePath,
+    ],
+  },
+});
 
 // Generate HTML files
 site
   .use(remark({
+    remarkPlugins: [
+      // Convert raw links to link cards
+      () => {
+        const escapeHtml = (s: string) => {
+          return s
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#39;");
+        };
+
+        return async (tree) => {
+          const cache: Record<
+            string,
+            Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">
+          > = JSON.parse(
+            await Deno.readTextFile(ogCachePath),
+          );
+          const matches: {
+            parent: { children: { type: string; value: string }[] };
+            index: number;
+            url: string;
+          }[] = [];
+
+          visit(
+            tree,
+            "paragraph",
+            (node, index, parent) => {
+              if (
+                index === undefined ||
+                node.data !== undefined ||
+                node.children.length !== 1
+              ) {
+                return;
+              }
+
+              const linkNode = node.children[0];
+              if (linkNode.type !== "link" || linkNode.children.length !== 1) {
+                return;
+              }
+
+              const { url } = linkNode;
+              const textNode = linkNode.children[0];
+              if (textNode.type !== "text" || textNode.value !== url) {
+                return;
+              }
+
+              matches.push({ parent, index, url });
+            },
+          );
+
+          for (const match of matches) {
+            let ogInfo = cache[match.url];
+            if (!ogInfo) {
+              const { error, result } = await ogs({ url: match.url });
+              if (error) {
+                throw new Error(`Cannot extract OG info: ${match.url}`);
+              }
+              const { ogTitle, ogDescription, ogImage, ogUrl } = result;
+              ogInfo = {
+                ogTitle,
+                ogDescription,
+                ogImage,
+                ogUrl,
+              };
+              cache[match.url] = ogInfo;
+            }
+
+            const title = escapeHtml(ogInfo.ogTitle || match.url);
+            const description = escapeHtml(ogInfo.ogDescription || "");
+            const image = ogInfo.ogImage?.at(0)?.url || "/fallback.svg";
+            const ogUrl = ogInfo.ogUrl || match.url;
+            const html = `<p alt="リンクカード">
+  <aside class="relative flex flex-wrap bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
+    <img src="${image}" alt="リンクカードのサムネイル" width="100%" loading="lazy" class="m-0 object-contain aspect-2/1">
+    <div class="p-lg">
+      <a href="${ogUrl}" target="_blank" rel="noopener" class="after:absolute after:inset-0 after:content-empty">${title}</a>
+      <p class="my-0 line-clamp-3">${description}</p>
+    </div>
+  </aside>
+  <a href="${match.url}" target="_blank" rel="noopener" class="block w-full text-right">${match.url}</a>
+</p>`;
+
+            match.parent.children[match.index] = {
+              type: "html",
+              value: html,
+            };
+          }
+
+          await Deno.writeTextFile(
+            ogCachePath,
+            JSON.stringify(cache, null, 2) + "\n",
+          );
+        };
+      },
+    ],
     rehypePlugins: [
       () => (tree) => {
         visit(tree, "element", (node) => {

@@ -7,6 +7,7 @@
   "imports": {
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.0/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.12/jsx-runtime.ts",
+    "open-graph-scraper": "npm:open-graph-scraper@^6.10.0",
     "rss-parser": "npm:rss-parser@3.13.0",
     "unist-util-visit": "npm:unist-util-visit@5.0.0",
     "unocss": "npm:unocss@66.5.4"
@@ -62,17 +63,7 @@
         "jsr.io:443",
         "deno.land:443"
       ],
-      "net": [
-        "0.0.0.0",
-        "jsr.io:443",
-        "cdn.jsdelivr.net:443",
-        "data.jsdelivr.com:443",
-        "registry.npmjs.org:443",
-        "www.reddit.com:443",
-        "zenn.dev:443",
-        "trap.jp:443",
-        "speakerdeck.com:443"
-      ],
+      "net": true,
       "env": true,
       "run": true,
       "ffi": true,
