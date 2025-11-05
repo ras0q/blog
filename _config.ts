@@ -5,6 +5,7 @@ import jsx from "lume/plugins/jsx.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import metas, { MetaData } from "lume/plugins/metas.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
+import ogImages from "lume/plugins/og_images.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import remark from "lume/plugins/remark.ts";
 import sitemap from "lume/plugins/sitemap.ts";
@@ -154,6 +155,20 @@ site
       name: "atom-one-light",
     },
   }))
+  .use(ogImages({
+    options: {
+      fonts: [
+        {
+          name: "Dela Gothic One",
+          weight: 400,
+          style: "normal",
+          data: (await Deno.readFile(
+            "./_fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf",
+          )).buffer,
+        },
+      ],
+    },
+  }))
   .use(pagefind())
   .use(sitemap())
   .use(
@@ -193,7 +208,7 @@ site.data(
     title: ({ title }) => `${title} | ${siteTitle}`,
     lang: siteLang,
     description: "Rasによる日記です",
-    image: "=image",
+    image: ({ url }) => url + "index.png",
     icon: "/favicon.svg",
     twitter: "@ras0q",
     robots: true,
@@ -204,6 +219,7 @@ site.data(
 site.ignore("README.md");
 
 site.data("layout", "post.tsx", "/posts");
+site.data("openGraphLayout", "og.tsx", "/posts");
 site.data("tags", ["Diary"], "/posts");
 
 site.copy("public/", "");
