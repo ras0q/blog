@@ -40,8 +40,6 @@ jobs:
         with:
           deno-version: v2.x
           cache: true
-      - run: deno task build
-      - uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          workingDirectory: _site
+      - run: deno task deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
