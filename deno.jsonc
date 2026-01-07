@@ -70,5 +70,6 @@
       "sys": true
     }
   },
-  "lock": false
+  "lock": false,
+  "allowScripts": ["npm:sharp"]
 }
