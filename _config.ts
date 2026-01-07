@@ -128,6 +128,7 @@ site
             };
           }
 
+          await Deno.mkdir("_cache", { recursive: true });
           await Deno.writeTextFile(
             ogCachePath,
             JSON.stringify(cache, null, 2) + "\n",
