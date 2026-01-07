@@ -10,7 +10,8 @@
     "open-graph-scraper": "npm:open-graph-scraper@^6.10.0",
     "rss-parser": "npm:rss-parser@3.13.0",
     "unist-util-visit": "npm:unist-util-visit@5.0.0",
-    "unocss": "npm:unocss@66.5.4"
+    "unocss": "npm:unocss@66.5.4",
+    "wrangler": "npm:wrangler@^4.54.0"
   },
   "tasks": {
     "lume": {
@@ -24,6 +25,13 @@
     "serve": {
       "description": "Run and serve the site for development",
       "command": "deno task lume -s"
+    },
+    "deploy": {
+      "description": "Deploy the site to Cloudflare Workers",
+      "command": "deno run -A npm:wrangler deploy",
+      "dependencies": [
+        "build"
+      ]
     }
   },
   "compilerOptions": {
@@ -71,5 +79,8 @@
     }
   },
   "lock": false,
-  "allowScripts": ["npm:sharp"]
+  "allowScripts": [
+    "npm:sharp",
+    "npm:workerd"
+  ]
 }

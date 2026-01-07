@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "blog-worker",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./_site"
+  },
+  "routes": [
+    {
+      "pattern": "blog.ras0q.com",
+      "custom_domain": true
+    }
+  ]
+}

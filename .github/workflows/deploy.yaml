@@ -1,4 +1,4 @@
-name: Deploy blog to GitHub Pages
+name: Deploy blog to Cloudflare Workers
 
 on:
   push:
@@ -41,10 +41,7 @@ jobs:
           deno-version: v2.x
           cache: true
       - run: deno task build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: cloudflare/wrangler-action@v3
         with:
-          path: "_site"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: _site
