@@ -44,12 +44,20 @@ site
         };
 
         return async (tree) => {
-          const cache: Record<
+          let cache: Record<
             string,
             Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">
-          > = JSON.parse(
-            await Deno.readTextFile(ogCachePath),
-          );
+          > = {};
+          try {
+            cache = JSON.parse(
+              await Deno.readTextFile(ogCachePath),
+            );
+          } catch (error) {
+            if (!(error instanceof Deno.errors.NotFound)) {
+              throw error;
+            }
+          }
+
           const matches: {
             parent: { children: { type: string; value: string }[] };
             index: number;
