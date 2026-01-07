@@ -34,7 +34,7 @@ jobs:
           repository: ${{ github.repository_owner }}/blog-posts
           # Use the GITHUB_TOKEN to access the private repo
           # Needs "contents: read" permission set above
-          token: ${{ secrets.GITHUB_TOKEN_FOR_POSTS }}
+          token: ${{ secrets.GH_TOKEN_FOR_POSTS }}
           path: ./posts
       - uses: denoland/setup-deno@v2
         with:
