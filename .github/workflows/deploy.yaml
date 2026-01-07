@@ -39,6 +39,7 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
+          cache: true
       - run: deno task build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
