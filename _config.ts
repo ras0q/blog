@@ -18,7 +18,7 @@ import type { OgObject } from "open-graph-scraper/types";
 export const siteTitle = "1245cal";
 const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
-const ogCachePath = ".cache/og.json";
+const ogCachePath = "_cache/og.json";
 
 const site = lume({
   watcher: {
