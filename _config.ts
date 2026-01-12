@@ -113,6 +113,8 @@ site
             const description = escapeHtml(ogInfo.ogDescription || "");
             const image = ogInfo.ogImage?.at(0)?.url || "/fallback.svg";
             const html = `
+<p class="sr-only"><strong>${title}</strong></p>
+<p class="sr-only">${description}</p>
 <p><a href="${match.url}" target="_blank" rel="noopener">${match.url}</a></p>
 <aside class="linkcard bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
   <img src="${image}" alt="${title}のサムネイル" loading="lazy">
