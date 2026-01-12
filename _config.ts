@@ -21,6 +21,7 @@ const isProd = Deno.env.get("DENO_ENV") === "production";
 const ogCachePath = "_cache/og.json";
 
 const site = lume({
+  location: isProd ? new URL("https://blog.ras0q.com") : undefined,
   watcher: {
     ignore: [
       ogCachePath,
