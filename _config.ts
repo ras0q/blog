@@ -116,13 +116,13 @@ site
 <p class="sr-only"><strong>${title}</strong></p>
 <p class="sr-only">${description}</p>
 <p><a href="${match.url}" target="_blank" rel="noopener">${match.url}</a></p>
-<aside class="linkcard bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
+<figure class="linkcard bg-neutral-200 dark:bg-neutral-700 bg-opacity-50!">
   <img src="${image}" alt="${title}のサムネイル" loading="lazy">
-  <div>
+  <figcaption>
     <a href="${match.url}" target="_blank" rel="noopener">${title}</a>
     <p>${description}</p>
-  </div>
-</aside>
+  </figcaption>
+</figure>
 `;
 
             match.parent.children[match.index] = {

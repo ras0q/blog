@@ -26,7 +26,7 @@ body {
   background-image: url("/groovepaper.png");
 }
 
-.linkcard {
+figure.linkcard {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -40,8 +40,8 @@ body {
     aspect-ratio: 2 / 1;
   }
 
-  & > div {
-    padding: 1rem;
+  & > figcaption {
+    padding: 0.5rem 1rem;
 
     & > a::after {
       position: absolute;
