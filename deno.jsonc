@@ -10,7 +10,7 @@
     "open-graph-scraper": "npm:open-graph-scraper@^6.11.0",
     "rss-parser": "npm:rss-parser@3.13.0",
     "unist-util-visit": "npm:unist-util-visit@5.0.0",
-    "unocss": "npm:unocss@66.5.12",
+    "unocss": "npm:unocss@66.5.10",
     "wrangler": "npm:wrangler@4.54.0"
   },
   "tasks": {
