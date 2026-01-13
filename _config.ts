@@ -157,28 +157,13 @@ site
       },
     ],
   }))
-  .use(jsx())
-  .use(metas());
+  .use(jsx());
 
 // Generate other files
 site
   .use(codeHighlight({
     theme: {
       name: "atom-one-light",
-    },
-  }))
-  .use(ogImages({
-    options: {
-      fonts: [
-        {
-          name: "Dela Gothic One",
-          weight: 400,
-          style: "normal",
-          data: (await Deno.readFile(
-            "./_fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf",
-          )).buffer,
-        },
-      ],
     },
   }))
   .use(pagefind())
@@ -200,6 +185,25 @@ if (isProd) {
     }))
     .use(minifyHTML());
 }
+
+// Open Graph Images
+site.use(ogImages({
+  options: {
+    fonts: [
+      {
+        name: "Dela Gothic One",
+        weight: 400,
+        style: "normal",
+        data: (await Deno.readFile(
+          "./_fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf",
+        )).buffer,
+      },
+    ],
+  },
+}));
+
+// Metas
+site.use(metas());
 
 // Feed
 site
