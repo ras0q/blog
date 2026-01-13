@@ -26,16 +26,11 @@
       "description": "Run and serve the site for development",
       "command": "deno task lume -s"
     },
-    "bundle": {
-      "description": "Bundle the site for Cloudflare Workers",
-      "command": "deno bundle --minify -o server.bundle.js server.ts"
-    },
     "deploy": {
       "description": "Deploy the site to Cloudflare Workers",
       "command": "deno run -A npm:wrangler deploy",
       "dependencies": [
-        "build",
-        "bundle"
+        "build"
       ]
     }
   },

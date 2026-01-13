@@ -1,8 +1,25 @@
-import Server from "lume/core/server.ts";
-import expires from "lume/middlewares/expires.ts";
+const HOUR = 1000 * 60 * 60;
 
-const server = new Server();
+export default {
+  async fetch(request: Request) {
+    const response = await fetch(request);
+    const { headers } = response;
+    const type = headers.get("Content-Type")?.split(";").shift()?.trim();
+    const duration = HOUR;
+    if (type === "text/css" || type === "text/javascript") {
+      const newHeaders = new Headers(headers);
+      newHeaders.set(
+        "Cache-Control",
+        `public, max-age=${duration / 1000}, immutable`,
+      );
 
-server.use(expires());
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: newHeaders,
+      });
+    }
 
-export default server;
+    return response;
+  },
+};
