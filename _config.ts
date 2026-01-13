@@ -240,6 +240,7 @@ site.data("tags", ["Diary"], "/posts");
 
 site.copy("public/", "");
 // NOTE: files starting with `_` will not be copied automatically.
+site.copy("public/_headers", "_headers");
 site.copy("public/_redirects", "_redirects");
 site.copy("posts/public", "");
 

@@ -5,7 +5,6 @@
   "assets": {
     "directory": "./_site"
   },
-  "main": "./server.ts",
   "routes": [
     {
       "pattern": "blog.ras0q.com",
