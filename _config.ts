@@ -14,7 +14,6 @@ import unoConfig from "./uno.config.ts";
 import { visit } from "unist-util-visit";
 import ogs from "open-graph-scraper";
 import type { OgObject } from "open-graph-scraper/types";
-import server from "./server.ts";
 
 export const siteTitle = "1245cal";
 const siteLang = "ja";
@@ -23,7 +22,6 @@ const ogCachePath = "_cache/og.json";
 
 const site = lume({
   location: isProd ? new URL("https://blog.ras0q.com") : undefined,
-  server: server.options,
   watcher: {
     ignore: [
       ogCachePath,
