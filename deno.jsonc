@@ -7,7 +7,7 @@
   "imports": {
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.4/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
-    "open-graph-scraper": "npm:open-graph-scraper@^6.11.0",
+    "open-graph-scraper": "npm:open-graph-scraper@6.11.0",
     "rss-parser": "npm:rss-parser@3.13.0",
     "unist-util-visit": "npm:unist-util-visit@5.0.0",
     "unocss": "npm:unocss@66.5.10",
@@ -79,7 +79,6 @@
       "sys": true
     }
   },
-  "lock": false,
   "allowScripts": [
     "npm:sharp",
     "npm:workerd"
