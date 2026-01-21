@@ -14,6 +14,7 @@ import unoConfig from "./uno.config.ts";
 import { visit } from "unist-util-visit";
 import ogs from "open-graph-scraper";
 import type { OgObject } from "open-graph-scraper/types";
+import { PluggableList } from "lume/deps/remark.ts";
 
 export const siteTitle = "1245cal";
 const siteLang = "ja";
@@ -29,90 +30,86 @@ const site = lume({
   },
 });
 
-// Generate HTML files
-site
-  .use(remark({
-    remarkPlugins: [
-      // Convert raw links to link cards
-      () => {
-        const escapeHtml = (s: string) => {
-          return s
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#39;");
+// Convert raw links to link cards
+const ogPlugin: PluggableList[number] = () => {
+  const escapeHtml = (s: string) => {
+    return s
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  };
+
+  return async (tree) => {
+    let cache: Record<
+      string,
+      Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">
+    > = {};
+    try {
+      cache = JSON.parse(
+        await Deno.readTextFile(ogCachePath),
+      );
+    } catch (error) {
+      if (!(error instanceof Deno.errors.NotFound)) {
+        throw error;
+      }
+    }
+
+    const matches: {
+      parent: { children: { type: string; value: string }[] };
+      index: number;
+      url: string;
+    }[] = [];
+
+    visit(
+      tree,
+      "paragraph",
+      (node, index, parent) => {
+        if (
+          index === undefined ||
+          node.data !== undefined ||
+          node.children.length !== 1
+        ) {
+          return;
+        }
+
+        const linkNode = node.children[0];
+        if (linkNode.type !== "link" || linkNode.children.length !== 1) {
+          return;
+        }
+
+        const { url } = linkNode;
+        const textNode = linkNode.children[0];
+        if (textNode.type !== "text" || textNode.value !== url) {
+          return;
+        }
+
+        matches.push({ parent, index, url });
+      },
+    );
+
+    for (const match of matches) {
+      let ogInfo = cache[match.url];
+      if (!ogInfo) {
+        const { error, result } = await ogs({ url: match.url });
+        if (error) {
+          throw new Error(`Cannot extract OG info: ${match.url}`);
+        }
+        const { ogTitle, ogDescription, ogImage, ogUrl } = result;
+        ogInfo = {
+          ogTitle,
+          ogDescription,
+          ogImage,
+          ogUrl,
         };
+        cache[match.url] = ogInfo;
+      }
 
-        return async (tree) => {
-          let cache: Record<
-            string,
-            Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">
-          > = {};
-          try {
-            cache = JSON.parse(
-              await Deno.readTextFile(ogCachePath),
-            );
-          } catch (error) {
-            if (!(error instanceof Deno.errors.NotFound)) {
-              throw error;
-            }
-          }
-
-          const matches: {
-            parent: { children: { type: string; value: string }[] };
-            index: number;
-            url: string;
-          }[] = [];
-
-          visit(
-            tree,
-            "paragraph",
-            (node, index, parent) => {
-              if (
-                index === undefined ||
-                node.data !== undefined ||
-                node.children.length !== 1
-              ) {
-                return;
-              }
-
-              const linkNode = node.children[0];
-              if (linkNode.type !== "link" || linkNode.children.length !== 1) {
-                return;
-              }
-
-              const { url } = linkNode;
-              const textNode = linkNode.children[0];
-              if (textNode.type !== "text" || textNode.value !== url) {
-                return;
-              }
-
-              matches.push({ parent, index, url });
-            },
-          );
-
-          for (const match of matches) {
-            let ogInfo = cache[match.url];
-            if (!ogInfo) {
-              const { error, result } = await ogs({ url: match.url });
-              if (error) {
-                throw new Error(`Cannot extract OG info: ${match.url}`);
-              }
-              const { ogTitle, ogDescription, ogImage, ogUrl } = result;
-              ogInfo = {
-                ogTitle,
-                ogDescription,
-                ogImage,
-                ogUrl,
-              };
-              cache[match.url] = ogInfo;
-            }
-
-            const title = escapeHtml(ogInfo.ogTitle || match.url);
-            const description = escapeHtml(ogInfo.ogDescription || "");
-            const image = ogInfo.ogImage?.at(0)?.url || "/fallback.svg";
-            const html = `
+      const title = escapeHtml(ogInfo.ogTitle || match.url);
+      const description = escapeHtml(ogInfo.ogDescription || "");
+      const image = ogInfo.ogImage?.at(0)?.url || "/fallback.svg";
+      const html = `
 <p class="sr-only"><strong>${title}</strong></p>
 <p class="sr-only">${description}</p>
 <p><a href="${match.url}" target="_blank" rel="noopener">${match.url}</a></p>
@@ -125,19 +122,25 @@ site
 </figure>
 `;
 
-            match.parent.children[match.index] = {
-              type: "html",
-              value: html,
-            };
-          }
+      match.parent.children[match.index] = {
+        type: "html",
+        value: html,
+      };
+    }
 
-          await Deno.mkdir("_cache", { recursive: true });
-          await Deno.writeTextFile(
-            ogCachePath,
-            JSON.stringify(cache, null, 2) + "\n",
-          );
-        };
-      },
+    await Deno.mkdir("_cache", { recursive: true });
+    await Deno.writeTextFile(
+      ogCachePath,
+      JSON.stringify(cache, null, 2) + "\n",
+    );
+  };
+};
+
+// Generate HTML files
+site
+  .use(remark({
+    remarkPlugins: [
+      ogPlugin,
     ],
     rehypePlugins: [
       () => (tree) => {
