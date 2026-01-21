@@ -43,7 +43,8 @@
   },
   "unstable": [
     "temporal",
-    "fmt-component"
+    "fmt-component",
+    "kv"
   ],
   "fmt": {
     "exclude": [

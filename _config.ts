@@ -19,16 +19,25 @@ import { PluggableList } from "lume/deps/remark.ts";
 export const siteTitle = "1245cal";
 const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
-const ogCachePath = "_cache/og.json";
 
 const site = lume({
   location: isProd ? new URL("https://blog.ras0q.com") : undefined,
   watcher: {
     ignore: [
-      ogCachePath,
+      // ogCachePath,
     ],
   },
 });
+
+await Deno.mkdir("_cache", { recursive: true });
+const kv = await Deno.openKv(
+  Deno.env.get("DENO_KV_PATH") ?? "_cache/kv.sqlite",
+);
+site.addEventListener("afterBuild", () => {
+  kv.close();
+});
+
+type OgInfo = Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">;
 
 // Convert raw links to link cards
 const ogPlugin: PluggableList[number] = () => {
@@ -42,20 +51,6 @@ const ogPlugin: PluggableList[number] = () => {
   };
 
   return async (tree) => {
-    let cache: Record<
-      string,
-      Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">
-    > = {};
-    try {
-      cache = JSON.parse(
-        await Deno.readTextFile(ogCachePath),
-      );
-    } catch (error) {
-      if (!(error instanceof Deno.errors.NotFound)) {
-        throw error;
-      }
-    }
-
     const matches: {
       parent: { children: { type: string; value: string }[] };
       index: number;
@@ -90,8 +85,12 @@ const ogPlugin: PluggableList[number] = () => {
     );
 
     for (const match of matches) {
-      let ogInfo = cache[match.url];
+      const cacheKey = ["og_cache", match.url];
+      const entry = await kv.get<OgInfo>(cacheKey);
+
+      let ogInfo = entry.value;
       if (!ogInfo) {
+        console.log(`Fetching OG info: ${match.url}`);
         const { error, result } = await ogs({ url: match.url });
         if (error) {
           throw new Error(`Cannot extract OG info: ${match.url}`);
@@ -103,7 +102,7 @@ const ogPlugin: PluggableList[number] = () => {
           ogImage,
           ogUrl,
         };
-        cache[match.url] = ogInfo;
+        await kv.set(cacheKey, ogInfo);
       }
 
       const title = escapeHtml(ogInfo.ogTitle || match.url);
@@ -127,12 +126,6 @@ const ogPlugin: PluggableList[number] = () => {
         value: html,
       };
     }
-
-    await Deno.mkdir("_cache", { recursive: true });
-    await Deno.writeTextFile(
-      ogCachePath,
-      JSON.stringify(cache, null, 2) + "\n",
-    );
   };
 };
 
