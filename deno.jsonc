@@ -5,12 +5,12 @@
     "node_modules"
   ],
   "imports": {
-    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.4/",
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts",
     "open-graph-scraper": "npm:open-graph-scraper@6.11.0",
     "rss-parser": "npm:rss-parser@3.13.0",
     "unist-util-visit": "npm:unist-util-visit@5.0.0",
-    "unocss": "npm:unocss@66.5.10",
+    "unocss": "npm:unocss@66.6.0",
     "wrangler": "npm:wrangler@4.54.0"
   },
   "tasks": {
@@ -53,7 +53,7 @@
   },
   "lint": {
     "plugins": [
-      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.4/lint.ts"
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/lint.ts"
     ],
     "rules": {
       "exclude": [
@@ -82,5 +82,6 @@
   "allowScripts": [
     "npm:sharp",
     "npm:workerd"
-  ]
+  ],
+  "lock": false
 }
