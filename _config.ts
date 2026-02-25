@@ -1,6 +1,7 @@
 import lume from "lume/mod.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import feed from "lume/plugins/feed.ts";
+import jsonLd from "lume/plugins/json_ld.ts";
 import jsx from "lume/plugins/jsx.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import metas, { MetaData } from "lume/plugins/metas.ts";
@@ -17,11 +18,13 @@ import type { OgObject } from "open-graph-scraper/types";
 import { PluggableList } from "lume/deps/remark.ts";
 
 export const siteTitle = "1245cal";
+const siteDescription = "エネルギー 1245cal (1袋当たり)";
 const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
+const siteLocation = isProd ? new URL("https://blog.ras0q.com") : undefined;
 
 const site = lume({
-  location: isProd ? new URL("https://blog.ras0q.com") : undefined,
+  location: siteLocation,
   watcher: {
     ignore: [
       // ogCachePath,
@@ -164,6 +167,7 @@ site
   }))
   .use(pagefind())
   .use(sitemap())
+  .use(jsonLd())
   .use(
     unocss({
       options: unoConfig,
@@ -219,13 +223,57 @@ site.data(
     site: siteTitle,
     title: ({ title }) => `${title} | ${siteTitle}`,
     lang: siteLang,
-    description: "エネルギー 1245cal (1袋当たり)",
+    description: ({ description, content }) =>
+      description ??
+        (typeof content === "string"
+          ? content.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(
+            0,
+            300,
+          )
+          : siteDescription),
     image: ({ url }) => url + "index.png",
     icon: "/favicon.svg",
     twitter: "@ras0q",
     robots: true,
     generator: true,
   } satisfies MetaData,
+);
+
+// Site-wide JSON-LD: WebSite schema
+site.data("jsonLd", {
+  "@type": "WebSite",
+  url: "/",
+  name: siteTitle,
+  description: siteDescription,
+  author: {
+    "@type": "Person",
+    name: "ras0q",
+    url: "https://ras0q.com",
+  },
+});
+
+// Per-post JSON-LD: BlogPosting schema (overrides site-wide WebSite schema)
+site.data(
+  "jsonLd",
+  {
+    "@type": "BlogPosting",
+    headline: "=title",
+    datePublished: "=date",
+    description: "=description",
+    image: "=thumbnail",
+    url: "=url",
+    author: {
+      "@type": "Person",
+      name: "ras0q",
+      url: "https://ras0q.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteTitle,
+      url: siteLocation,
+    },
+  },
+  "/posts",
 );
 
 site.ignore("README.md");

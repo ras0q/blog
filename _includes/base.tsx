@@ -1,12 +1,12 @@
 import { siteTitle } from "../_config.ts";
 
 export default (data: Lume.Data) => (
-  <html lang="ja">
+  <html lang={data.lang ?? "ja"}>
     <head>
-      <title>{`${data.title} | ${siteTitle}`}</title>
-      <link rel="stylesheet" href="/style.css" />
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <link rel="canonical" href={data.url} />
+      <link rel="stylesheet" href="/style.css" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
     <body class="prose max-w-full prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-700">

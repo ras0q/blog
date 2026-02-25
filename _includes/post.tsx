@@ -7,7 +7,7 @@ export default (data: Lume.Data & Post) => (
     {data.thumbnail && (
       <img
         src={data.thumbnail}
-        alt="thumbnail"
+        alt={`${data.title}のサムネイル`}
         loading="lazy"
         class="w-full min-w-full aspect-ratio-[5/2] object-cover"
       />
