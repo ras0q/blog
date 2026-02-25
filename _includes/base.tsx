@@ -25,7 +25,7 @@ export default (data: Lume.Data) => (
         </div>
       </nav>
       <main
-        class="mx-auto max-w-[min(70ch,80svw)]"
+        class="mx-auto max-w-[min(70ch,90svw)]"
         dangerouslySetInnerHTML={{ __html: String(data.content) }}
       >
       </main>
