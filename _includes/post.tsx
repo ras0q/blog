@@ -13,7 +13,7 @@ export default (data: Lume.Data & Post) => (
       />
     )}
     <section>
-      <h1 class="text-4xl m-0">{data.title}</h1>
+      <h1 class="m-0">{data.title}</h1>
       <data.comp.PageData {...data} />
       {data.redirectURL && (
         <span>

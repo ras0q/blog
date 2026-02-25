@@ -16,7 +16,11 @@ export default defineConfig<object>({
 }
 
 body {
+  max-width: 100%;
   min-height: 100svh;
+  font-family: sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   line-height: 1.5;
   overflow-y: scroll;
   overflow-wrap: anywhere;
@@ -77,6 +81,9 @@ figure.linkcard {
         },
         ":not(pre) > code": {
           "white-space": "normal",
+        },
+        "h1": {
+          "font-weight": "bold",
         },
         "img": {
           "max-width": "100%",
