@@ -2,7 +2,21 @@ import { Post } from "../generators/types.d.ts";
 
 export const layout = "base.tsx";
 
-export default (data: Lume.Data) => {
+const escapeMarkdown = (text: string, maxLines: number) =>
+  text
+    .replaceAll("\n\n", "\n")
+    .split("\n")
+    .filter((line) => line.match(/^\s*<!--.*-->\s*$|^---+$|^!$/) === null)
+    .slice(0, maxLines)
+    .map((line) =>
+      line.replaceAll(
+        /^(\s*)(#+|!\[|```+|-\s|\d+\.\s)/g,
+        "$1\\$2",
+      )
+    )
+    .join("\n");
+
+export default (data: Lume.Data, helpers: Lume.Helpers) => {
   if (data.query === undefined) {
     return <div>Tag not found!</div>;
   }
@@ -50,13 +64,10 @@ export default (data: Lume.Data) => {
               <div class="flex justify-between gap-lg">
                 <div>
                   <data.comp.PageData {...data} />
-                  <div class="break-all whitespace-pre-wrap line-clamp-3">
+                  <div class="break-all whitespace-pre-wrap line-clamp-3 children:m-0">
                     {data.content
-                      ?.replaceAll("\n\n", "\n")
-                      .split("\n")
-                      .slice(0, 4)
-                      .join("\n") ??
-                      "Empty"}
+                      ? helpers.mdRemark(escapeMarkdown(data.content, 4))
+                      : "Empty"}
                   </div>
                 </div>
                 {data.thumbnail && (
