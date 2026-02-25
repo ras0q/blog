@@ -90,10 +90,17 @@ const ogPlugin: PluggableList[number] = () => {
     );
 
     for (const match of matches) {
-      const cacheKey = ["og_cache", match.url];
-      const entry = await kv.get<OgInfo>(cacheKey);
+      let ogInfo: OgInfo | null;
 
-      let ogInfo = entry.value;
+      const cacheKey = ["og_cache", match.url];
+      try {
+        const entry = await kv.get<OgInfo>(cacheKey);
+        ogInfo = entry.value;
+      } catch (e) {
+        console.error(`Failed to access KV for ${match.url}:`, e);
+        continue;
+      }
+
       if (!ogInfo) {
         console.log(`Fetching OG info: ${match.url}`);
         const { error, result } = await ogs({ url: match.url });
