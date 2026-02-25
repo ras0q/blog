@@ -1,11 +1,12 @@
-import { siteTitle } from "../_config.ts";
+import { siteLocation, siteTitle } from "../_config.ts";
 
 export default (data: Lume.Data) => (
   <html lang={data.lang ?? "ja"}>
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <link rel="canonical" href={data.url} />
+      <title>{`${data.title} | ${siteTitle}`}</title>
+      <link rel="canonical" href={new URL(data.url, siteLocation).toString()} />
       <link rel="stylesheet" href="/style.css" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}

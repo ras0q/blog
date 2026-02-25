@@ -21,7 +21,9 @@ export const siteTitle = "1245cal";
 const siteDescription = "エネルギー 1245cal (1袋当たり)";
 const siteLang = "ja";
 const isProd = Deno.env.get("DENO_ENV") === "production";
-const siteLocation = isProd ? new URL("https://blog.ras0q.com") : undefined;
+export const siteLocation = isProd
+  ? new URL("https://blog.ras0q.com")
+  : new URL("http://localhost:3000");
 
 const site = lume({
   location: siteLocation,
