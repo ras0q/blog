@@ -75,6 +75,7 @@ figure.linkcard {
       cssExtend: {
         "a": {
           "text-decoration": "none",
+          "font-weight": "inherit",
         },
         "a:hover": {
           "text-decoration": "underline",
