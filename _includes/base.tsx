@@ -10,8 +10,8 @@ export default (data: Lume.Data) => (
       <link rel="stylesheet" href="/style.css" />
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
-    <body class="prose max-w-full prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-700">
-      <nav class="p-4xl flex justify-between">
+    <body class="prose max-w-full prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-700 px-2xl py-4xl space-y-4xl">
+      <nav class="flex justify-between">
         <a href="/" class="text-xl font-bold decoration-none">{siteTitle}</a>
         <div class="flex gap-xl">
           <a
@@ -25,11 +25,11 @@ export default (data: Lume.Data) => (
         </div>
       </nav>
       <main
-        class="mx-auto max-w-[min(70ch,90svw)]"
+        class="mx-auto max-w-[min(70ch,100%)]"
         dangerouslySetInnerHTML={{ __html: String(data.content) }}
       >
       </main>
-      <footer class="sticky top-100svh p-4xl">
+      <footer class="sticky top-100svh">
         <div class="flex justify-end whitespace-pre">
           © 2024 <a href="https://ras0q.com">@ras0q</a>{" "}
           Powered by 🔥<a href="https://lume.land">Lume</a>
