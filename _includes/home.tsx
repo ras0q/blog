@@ -64,7 +64,7 @@ export default (data: Lume.Data) => {
                     src={data.thumbnail}
                     alt={`${data.title ?? "Untitled"}のサムネイル`}
                     loading="lazy"
-                    class="pt-xs w-40% min-w-40% aspect-ratio-[16/9] object-cover"
+                    class="not-prose pt-xs w-40% min-w-40% aspect-ratio-[16/9] object-cover"
                   />
                 )}
               </div>
