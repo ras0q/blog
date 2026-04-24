@@ -8,6 +8,9 @@ export default (data: Lume.Data) => (
       <title>{`${data.title} | ${siteTitle}`}</title>
       <link rel="canonical" href={new URL(data.url, siteLocation).toString()} />
       <link rel="stylesheet" href="/style.css" />
+      <script type="speculationrules">
+        {`{ "prefetch": [{"where": {"href_matches": "/*"}, "eagerness": "moderate"}] }`}
+      </script>
     </head>
     {/* FIXME: scrollbar-gutterを使いたい */}
     <body class="prose max-w-full prose-neutral dark:prose-invert bg-neutral-50 dark:bg-neutral-700 px-2xl py-4xl space-y-4xl">
