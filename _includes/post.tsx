@@ -4,6 +4,11 @@ export const layout = "base.tsx";
 
 export default (data: Lume.Data & Post) => (
   <article>
+    {data.draft === true && (
+      <div class="w-full bg-red font-bold text-center my-lg">
+        THIS POST IS DRAFT!!!
+      </div>
+    )}
     {data.thumbnail && (
       <img
         src={data.thumbnail}
