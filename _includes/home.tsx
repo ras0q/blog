@@ -6,7 +6,9 @@ const escapeMarkdown = (text: string, maxLines: number) =>
   text
     .replaceAll("\n\n", "\n")
     .split("\n")
-    .filter((line) => line.match(/^\s*<!--.*-->\s*$|^---+$|^!$/) === null)
+    .filter((line) =>
+      line.match(/^\s*<.+<\/\w+>\s*$|^\s*<!--.*-->\s*$|^---+$|^!$/) === null
+    )
     .slice(0, maxLines)
     .map((line) =>
       line.replaceAll(
@@ -64,11 +66,11 @@ export default (data: Lume.Data, helpers: Lume.Helpers) => {
               <div class="flex justify-between gap-lg">
                 <div>
                   <data.comp.PageData {...data} />
-                  <div class="break-all whitespace-pre-wrap line-clamp-3 children:m-0">
-                    {data.content
-                      ? helpers.mdRemark(escapeMarkdown(data.content, 4))
-                      : "Empty"}
-                  </div>
+                  {data.content && (
+                    <div class="break-all whitespace-pre-wrap line-clamp-3 children:m-0">
+                      {helpers.mdRemark(escapeMarkdown(data.content, 4))}
+                    </div>
+                  )}
                 </div>
                 {data.thumbnail && (
                   <img
