@@ -223,6 +223,12 @@ site
         title: siteTitle,
         lang: siteLang,
       },
+      items: {
+        content: ({ children }) =>
+          typeof children === "string"
+            ? (children.includes("at://") ? "" : children)
+            : undefined,
+      },
     }),
   );
 
