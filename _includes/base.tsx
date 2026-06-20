@@ -1,5 +1,37 @@
 import { siteLocation, siteTitle } from "../_config.ts";
 
+const standardPublicationDid = "did:plc:ci3d3ax4f4rr3utnlxad7zud";
+
+/**
+ * AT Protocol record keys must be ASCII-safe, so encode the site-relative URL
+ * into unpadded base64url to get a deterministic identifier for each page.
+ */
+function generateStandardSiteRkey(url: string): string {
+  const bytes = new TextEncoder().encode(url);
+  let binary = "";
+  for (const byte of bytes) {
+    binary += String.fromCharCode(byte);
+  }
+
+  return btoa(binary).replaceAll("+", "-").replaceAll("/", "_").replaceAll(
+    /=+$/g,
+    "",
+  );
+}
+
+/**
+ * Builds the Standard.site document record URI for a page.
+ * See: https://standard.site/
+ *
+ * This site derives a deterministic `rkey` from `data.url` and uses it under
+ * the publication DID declared in `/.well-known/site.standard.publication`.
+ */
+function generateStandardSiteDocumentUri(url: string): string {
+  return `at://${standardPublicationDid}/site.standard.document/${
+    generateStandardSiteRkey(url)
+  }`;
+}
+
 export default (data: Lume.Data) => (
   <html lang={data.lang ?? "ja"}>
     <head>
@@ -7,6 +39,10 @@ export default (data: Lume.Data) => (
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <title>{`${data.title} | ${siteTitle}`}</title>
       <link rel="canonical" href={new URL(data.url, siteLocation).toString()} />
+      <link
+        rel="site.standard.document"
+        href={generateStandardSiteDocumentUri(data.url)}
+      />
       <link rel="stylesheet" href="/style.css" />
       <script type="speculationrules">
         {`{ "prefetch": [{"where": {"href_matches": "/*"}, "eagerness": "moderate"}] }`}
