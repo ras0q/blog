@@ -44,6 +44,26 @@ site.addEventListener("afterBuild", () => {
 
 type OgInfo = Pick<OgObject, "ogTitle" | "ogDescription" | "ogImage" | "ogUrl">;
 
+/**
+ * Returns a root-relative image path when the original Markdown image URL points
+ * to a local relative asset. External URLs and already-rooted paths are left
+ * untouched so existing references keep their intended semantics.
+ *
+ * @param url Original image URL from the Markdown AST.
+ * @returns Normalized URL for downstream HTML conversion.
+ */
+const normalizeImageUrl = (url: string): string => {
+  if (
+    url.startsWith("/") ||
+    url.startsWith("#") ||
+    /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url)
+  ) {
+    return url;
+  }
+
+  return `/${url.replace(/^\.\//, "")}`;
+};
+
 // Convert raw links to link cards
 const ogPlugin: PluggableList[number] = () => {
   const escapeHtml = (s: string) => {
@@ -141,10 +161,20 @@ const ogPlugin: PluggableList[number] = () => {
   };
 };
 
+// Normalize Markdown image paths before HTML conversion.
+const normalizeImagePlugin: PluggableList[number] = () => {
+  return (tree) => {
+    visit(tree, "image", (node) => {
+      node.url = normalizeImageUrl(node.url);
+    });
+  };
+};
+
 // Generate HTML files
 site
   .use(remark({
     remarkPlugins: [
+      normalizeImagePlugin,
       ogPlugin,
     ],
     rehypePlugins: [
