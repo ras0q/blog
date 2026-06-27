@@ -322,6 +322,7 @@ site.data(
 );
 
 site.ignore("README.md");
+site.ignore("tmp");
 
 site.data("layout", "post.tsx", "/posts");
 site.data("openGraphLayout", "og.tsx", "/posts");
